@@ -8,11 +8,11 @@
 
 	function read_player_list($search_str)
 	{
-		$data 	= file_get_contents("http://search.espncricinfo.com/ci/content/player/search.html?search=" . $search_str . "&x=38&y=11");		
-		$summaries  = explode('<p class="ColumnistSmry">', $data);
-		$count = 0;
-
-		$player_list = array();		
+		$scraper_api 	= "http://api.scraperapi.com?api_key=e77ad5342cca94d32c633c4c836e7813&url=";
+		$data 			= file_get_contents($scraper_api . "http://search.espncricinfo.com/ci/content/player/search.html?search=" . $search_str . "&x=38&y=11");		
+		$summaries  	= explode('<p class="ColumnistSmry">', $data);
+		$count 			= 0;
+		$player_list 	= array();		
 		
 		foreach ($summaries as $summary)
 		{
