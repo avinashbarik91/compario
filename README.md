@@ -1,2 +1,2 @@
-# ComPlayer
-Web app to compare head-to-head sports player stats
+# Compario
+Service to compare head-to-head stats for cricket players.
