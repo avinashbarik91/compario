@@ -30,3 +30,34 @@ function getPlayers(e)
         }
     });
 }
+
+function comparePlayers(e)
+{
+    e.preventDefault();
+    var player1Link = $("#player-1-selected option:selected").attr('data-index');
+    var player2Link = $("#player-2-selected option:selected").attr('data-index'); 
+
+    $.ajax({
+        url: "ajax_handler.php",
+        dataType: "json",
+        type: "POST",
+        data: {
+                function: "comparePlayers", 
+                player_1_link: player1Link,
+                player_2_link: player2Link
+            },
+        success: function(data){
+            if (data.output != null)
+            {
+                $("#player-comparison-wrapper").html(data.output);
+            }
+            else
+            {
+                alert(data.error);
+            }
+        },
+        error: function(data){
+
+        }
+    });
+}

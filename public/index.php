@@ -12,6 +12,10 @@
 			
 		</div>
 
+		<div id='player-comparison-wrapper'>
+			
+		</div>
+
 		<script src="js/jquery.slim.min.js"></script>
 		<script src="js/jquery.min.js"></script>
 		<script src="js/common.js"></script>
