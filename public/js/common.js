@@ -18,7 +18,8 @@ function getPlayers(e)
         success: function(data){
             if (data.output != null)
             {
-                $("#content").html(data.output);
+                $("#content").hide();
+                $("#content").html(data.output).fadeIn(500);
             }
             else
             {
@@ -39,6 +40,8 @@ function comparePlayers(e)
 
     var player1Name = $("#player-1-selected option:selected").text();
     var player2Name = $("#player-2-selected option:selected").text();
+    
+    $("#player-comparison-wrapper").html("Crunching Data...");
 
     $.ajax({
         url: "ajax_handler.php",
@@ -53,7 +56,7 @@ function comparePlayers(e)
             },
         success: function(data){
             if (data.output != null)
-            {
+            {                
                 $("#player-comparison-wrapper").html(data.output);
             }
             else

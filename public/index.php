@@ -1,13 +1,26 @@
 <html>
 	<head>
 		<style>
+			
+			body {
+				background-color: #232882;
+				color: white;
+				text-align: center;
+			}
+
 			.xyz {
-				width: 400px;
-				float: left;
+				width: 350px;
+			    float: left;
+			    border: 1px solid white;
+			    margin: 10px;
+			    padding: 10px;
 			}
 		</style>		
 	</head>
 	<body>
+		<h1>Compario</h1>
+		<p>Compare cricket player stats head-to-head</p>
+
 		<form id="compare-form" method="post" action="/">
 			<input type='text' name='player_1' value='' placeholder='Search Player 1 Name'/>
 			<input type='text' name='player_2' value='' placeholder='Search Player 2 Name'/>

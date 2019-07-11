@@ -69,7 +69,7 @@ function render_player_list($player_1, $player_2)
 		$html .=  "</select>";
 	}
 
-	$html .= "<button id='compare-btn' onclick=comparePlayers(event)>Compare</button>";
+	$html .= "<br/><br/><button id='compare-btn' onclick=comparePlayers(event)>Compare</button>";
 
 	return $html;
 }
@@ -90,9 +90,9 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 {
 	$player_stats = read_player_comparison($player_1_link, $player_2_link);
 
-	$player_1_bat_stats_keys = array_keys($player_stats['player_1_stats']['bat']['Tests']);	
-	$player_1_bat_stats_val  = array_values($player_stats['player_1_stats']['bat']['Tests']);
-	$player_2_bat_stats_val  = array_values($player_stats['player_2_stats']['bat']['Tests']);
+	$player_1_bat_stats_keys = array_keys($player_stats['player_1_stats']['bat']['ODIs']);	
+	$player_1_bat_stats_val  = array_values($player_stats['player_1_stats']['bat']['ODIs']);
+	$player_2_bat_stats_val  = array_values($player_stats['player_2_stats']['bat']['ODIs']);
 	
 	for ($i = 0; $i < sizeof($player_1_bat_stats_keys); $i++)
 	{
@@ -100,7 +100,7 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 		            <div class='player-bat-stats'>          
 		                <script>
 					            var ctx = document.getElementById('my-chart-".$i."').getContext('2d');      
-					            Chart.defaults.global.defaultFontColor = 'black';       
+					            Chart.defaults.global.defaultFontColor = 'white';       
 					            var chart = new Chart(ctx, {               
 					                
 					                type: 'horizontalBar',  
@@ -110,17 +110,17 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 					                    labels: ['".$player_1_bat_stats_keys[$i]."'],    
 					                    datasets: [
 					                    {
-					                        label: '".$player_1_name."',
+					                        label: '".explode("(", $player_1_name)[0]."',
 	                                        pointStyle: 'line',      
-					                        backgroundColor: 'red',
+					                        backgroundColor: '#ff1e50',
 					                        <!--borderColor: 'darkgreen',	-->		                      
 		                					borderWidth: 1,
 					                        data: [".$player_1_bat_stats_val[$i]."],                       
 					                    },
 					                    {
-					                        label: '".$player_2_name."',
+					                        label: '".explode("(", $player_2_name)[0]."',
 	                                        pointStyle: 'line',      
-					                        backgroundColor: 'blue',
+					                        backgroundColor: '#009051',
 					                        <!--borderColor: 'darkgreen',	-->		                      
 		                					borderWidth: 1,
 					                        data: [".$player_2_bat_stats_val[$i]."],                        
@@ -136,7 +136,7 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 					                    {
 					                        labels: 
 					                        {				                            
-					                            fontColor: 'black'
+					                            fontColor: 'white'
 					                        }
 					                    },
 
@@ -189,7 +189,7 @@ function read_batting_and_fielding_stats($player_link)
 	$stat_array = array();
 	$stat_group_array = array();
 	$current_stat_group_name = "";
-	$stat_category = array("Mat", "Inns", "NO", "Runs", "HS", "Ave", "BF", "SR", "100", "50", "4s", "6s", "Ct", "St");
+	$stat_category = array("Matches", "Innings", "Not Outs", "Runs", "Highest Score", "Batting Average", "Balls Faced", "Strike Rate", "100s", "50s", "4s", "6s", "Catches Taken", "Stumpings Made");
 	$loop_count = 0;
 	
 	foreach ($bat_field_td as $td) 
@@ -204,7 +204,7 @@ function read_batting_and_fielding_stats($player_link)
 			}
 			else
 			{
-				$stat_array[$stat_category[$count]] = explode(">", $td)[1];
+				$stat_array[$stat_category[$count]] = str_replace("*", "", explode(">", $td)[1]);
 				$stat_group_array[$current_stat_group_name] = $stat_array;
 				$count++;
 			}
@@ -229,7 +229,7 @@ function read_bowling_stats($player_link)
 	$stat_array = array();
 	$stat_group_array = array();
 	$current_stat_group_name = "";
-	$stat_category = array("Mat", "Inns", "Balls", "Runs", "Wkts", "BBI", "BBM", "Avg", "Econ", "SR", "4w", "5w", "10");
+	$stat_category = array("Matches", "Innings", "Not Outs", "Runs", "Highest Score", "Batting Average", "Balls Faced", "Strike Rate", "100s", "50s", "4s", "6s", "Catches Taken", "Stumpings Made");
 	$loop_count = 0;
 	
 	foreach ($bowl_td as $td) 
