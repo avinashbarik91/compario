@@ -8,12 +8,25 @@
 				text-align: center;
 			}
 
+			#player-comparison-wrapper {
+				width: auto !important;
+			    max-width: 1200px;
+			    margin: 0 auto;
+			    text-align: center;
+			    display: table;
+			}
+
 			.xyz {
-				width: 350px;
-			    float: left;
+			    width: 350px;	   
 			    border: 1px solid white;
 			    margin: 10px;
 			    padding: 10px;
+			    display: inline-block;
+			    text-align: left;
+			}
+
+			.player-bat-stats {
+				display: inline-block;
 			}
 		</style>		
 	</head>
