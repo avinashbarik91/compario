@@ -28,6 +28,7 @@
 			.player-bat-stats {
 				display: inline-block;
 			}
+			
 		</style>		
 	</head>
 	<body>

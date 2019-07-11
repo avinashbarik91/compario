@@ -1,5 +1,8 @@
 <?php 
 
+$bat_stat_category  = array("Matches", "Innings", "Not Outs", "Runs", "Highest Score", "Batting Average", "Balls Faced", "Strike Rate", "100s", "50s", "4s", "6s", "Catches Taken", "Stumpings Made");
+$bowl_stat_category = array("Matches", "Innings", "Balls Bowled", "Runs Conceded", "Wickets Taken", "Best Bowling Innings", "Best Bowling Match", "Bowling Average", "Economy Rate", "Bowling Strike Rate", "4 Wicket Haul", "5 Wicket Haul", "10 Wicket Haul");
+
 function read_player_list($search_str)
 {	
 	$search_str 	= trim(htmlspecialchars($search_str));
@@ -79,7 +82,7 @@ function read_player_comparison($player_1_link, $player_2_link)
 	$player_1_bat_stats 	= read_batting_and_fielding_stats($player_1_link);
 	$player_1_bowl_stats 	= read_bowling_stats($player_1_link);
 	$player_2_bat_stats 	= read_batting_and_fielding_stats($player_2_link);
-	$player_2_bowl_stats 	= read_batting_and_fielding_stats($player_2_link);
+	$player_2_bowl_stats 	= read_bowling_stats($player_2_link);
 
 	return array(	"player_1_stats" => array("bat" => $player_1_bat_stats, "bowl" => $player_1_bowl_stats), 
 					"player_2_stats" => array("bat" => $player_2_bat_stats, "bowl" => $player_2_bowl_stats)
@@ -90,7 +93,7 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 {
 	$player_stats = read_player_comparison($player_1_link, $player_2_link);
 
-	$player_1_bat_stats_keys = array_keys($player_stats['player_1_stats']['bat']['ODIs']);	
+	$player_1_bat_stats_keys = $GLOBALS['bat_stat_category'];
 	$player_1_bat_stats_val  = array_values($player_stats['player_1_stats']['bat']['ODIs']);
 	$player_2_bat_stats_val  = array_values($player_stats['player_2_stats']['bat']['ODIs']);
 	
@@ -189,7 +192,7 @@ function read_batting_and_fielding_stats($player_link)
 	$stat_array = array();
 	$stat_group_array = array();
 	$current_stat_group_name = "";
-	$stat_category = array("Matches", "Innings", "Not Outs", "Runs", "Highest Score", "Batting Average", "Balls Faced", "Strike Rate", "100s", "50s", "4s", "6s", "Catches Taken", "Stumpings Made");
+	$stat_category = $GLOBALS['bat_stat_category'];
 	$loop_count = 0;
 	
 	foreach ($bat_field_td as $td) 
@@ -229,7 +232,7 @@ function read_bowling_stats($player_link)
 	$stat_array = array();
 	$stat_group_array = array();
 	$current_stat_group_name = "";
-	$stat_category = array("Matches", "Innings", "Not Outs", "Runs", "Highest Score", "Batting Average", "Balls Faced", "Strike Rate", "100s", "50s", "4s", "6s", "Catches Taken", "Stumpings Made");
+	$stat_category = $GLOBALS['bowl_stat_category'];
 	$loop_count = 0;
 	
 	foreach ($bowl_td as $td) 
