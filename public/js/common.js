@@ -37,6 +37,9 @@ function comparePlayers(e)
     var player1Link = $("#player-1-selected option:selected").attr('data-index');
     var player2Link = $("#player-2-selected option:selected").attr('data-index'); 
 
+    var player1Name = $("#player-1-selected option:selected").text();
+    var player2Name = $("#player-2-selected option:selected").text();
+
     $.ajax({
         url: "ajax_handler.php",
         dataType: "json",
@@ -44,7 +47,9 @@ function comparePlayers(e)
         data: {
                 function: "comparePlayers", 
                 player_1_link: player1Link,
-                player_2_link: player2Link
+                player_2_link: player2Link,
+                player_1_name: player1Name,
+                player_2_name: player2Name
             },
         success: function(data){
             if (data.output != null)

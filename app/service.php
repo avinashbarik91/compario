@@ -74,7 +74,7 @@ function render_player_list($player_1, $player_2)
 	return $html;
 }
 
-function render_players_comparison($player_1_link, $player_2_link)
+function read_player_comparison($player_1_link, $player_2_link)
 {
 	$player_1_bat_stats 	= read_batting_and_fielding_stats($player_1_link);
 	$player_1_bowl_stats 	= read_bowling_stats($player_1_link);
@@ -86,9 +86,100 @@ function render_players_comparison($player_1_link, $player_2_link)
 				);
 }
 
+function render_players_comparison($player_1_link, $player_1_name, $player_2_link, $player_2_name)
+{
+	$player_stats = read_player_comparison($player_1_link, $player_2_link);
+
+	$player_1_bat_stats_keys = array_keys($player_stats['player_1_stats']['bat']['Tests']);	
+	$player_1_bat_stats_val  = array_values($player_stats['player_1_stats']['bat']['Tests']);
+	$player_2_bat_stats_val  = array_values($player_stats['player_2_stats']['bat']['Tests']);
+	
+	for ($i = 0; $i < sizeof($player_1_bat_stats_keys); $i++)
+	{
+		$html .= "<div class='xyz'><canvas id='my-chart-".$i."'></canvas></div>                 
+		            <div class='player-bat-stats'>          
+		                <script>
+					            var ctx = document.getElementById('my-chart-".$i."').getContext('2d');      
+					            Chart.defaults.global.defaultFontColor = 'black';       
+					            var chart = new Chart(ctx, {               
+					                
+					                type: 'horizontalBar',  
+					                responsive: true,
+	    							maintainAspectRatio: false,      
+					                data: {
+					                    labels: ['".$player_1_bat_stats_keys[$i]."'],    
+					                    datasets: [
+					                    {
+					                        label: '".$player_1_name."',
+	                                        pointStyle: 'line',      
+					                        backgroundColor: 'red',
+					                        <!--borderColor: 'darkgreen',	-->		                      
+		                					borderWidth: 1,
+					                        data: [".$player_1_bat_stats_val[$i]."],                       
+					                    },
+					                    {
+					                        label: '".$player_2_name."',
+	                                        pointStyle: 'line',      
+					                        backgroundColor: 'blue',
+					                        <!--borderColor: 'darkgreen',	-->		                      
+		                					borderWidth: 1,
+					                        data: [".$player_2_bat_stats_val[$i]."],                        
+					                    }
+					                    ]
+					                },
+
+					                //----Configuration options go here-----
+					                
+					                options: 
+					                {
+					                    legend: 
+					                    {
+					                        labels: 
+					                        {				                            
+					                            fontColor: 'black'
+					                        }
+					                    },
+
+					                    scales:
+					                    {
+					                        xAxes: [{                           
+					                            
+					                            scaleLabel: 
+					                            {
+					                                display: true,
+					                            } ,
+					                            ticks: 
+					                            {
+											        beginAtZero:true
+											    }  
+					                        }],
+
+					                        yAxes: [{                           
+					                            
+					                            scaleLabel: 
+					                            {
+					                                display: true,
+					                            }, 
+					                            ticks: 
+					                            {
+											        beginAtZero:true
+											    } 
+					                        }]
+
+					                    }			                    
+					                }
+					            });
+					    </script>        
+		            </div>";
+	}
+
+	return $html;
+}
+
 function read_batting_and_fielding_stats($player_link)
 {
-	$scraper_api 		= "http://api.scraperapi.com?api_key=e77ad5342cca94d32c633c4c836e7813&url=";
+	//$scraper_api 		= "http://api.scraperapi.com?api_key=e77ad5342cca94d32c633c4c836e7813&url=";
+	$scraper_api 		= "";
 	$data 				= file_get_contents($scraper_api . "http://www.espncricinfo.com" . $player_link);	
 	$bat_field_table 	= explode('<table class="engineTable"', $data)[1];
 	$bat_field_body  	= explode('<tbody>', $bat_field_table)[1];
@@ -127,7 +218,8 @@ function read_batting_and_fielding_stats($player_link)
 
 function read_bowling_stats($player_link)
 {
-	$scraper_api 		= "http://api.scraperapi.com?api_key=e77ad5342cca94d32c633c4c836e7813&url=";
+	//$scraper_api 		= "http://api.scraperapi.com?api_key=e77ad5342cca94d32c633c4c836e7813&url=";
+	$scraper_api 		= "";
 	$data 				= file_get_contents($scraper_api . "http://www.espncricinfo.com" . $player_link);	
 	$bowl_table 		= explode('<table class="engineTable"', $data)[2];
 	$bowl_table_body  	= explode('<tbody>', $bowl_table)[1];
