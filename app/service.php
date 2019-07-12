@@ -93,13 +93,20 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 {
 	$player_stats = read_player_comparison($player_1_link, $player_2_link);
 
+	$key = "ODIs";
 	$player_1_bat_stats_keys = $GLOBALS['bat_stat_category'];
-	$player_1_bat_stats_val  = array_values($player_stats['player_1_stats']['bat']['ODIs']);
-	$player_2_bat_stats_val  = array_values($player_stats['player_2_stats']['bat']['ODIs']);
+	$player_1_bat_stats_val  = array_values($player_stats['player_1_stats']['bat'][$key]);
+	$player_2_bat_stats_val  = array_values($player_stats['player_2_stats']['bat'][$key]);
+
+	$player_1_clean_name = explode("(", $player_1_name)[0];
+	$player_2_clean_name = explode("(", $player_2_name)[0];
+
+	$html = "<i class='fas fa-poll'></i><h3>Head-to-Head ".$key." Career Comparison</h3>";
+	$html .= "<h2>" . $player_1_clean_name . "  \tvs\t  " . $player_2_clean_name . "</h2>";
 	
 	for ($i = 0; $i < sizeof($player_1_bat_stats_keys); $i++)
 	{
-		$html .= "<div class='xyz'><canvas id='my-chart-".$i."'></canvas></div>                 
+		$html .= "<div class='xyz'><h4 class='chart-heading'>".$player_1_bat_stats_keys[$i]."<h4><canvas id='my-chart-".$i."'></canvas></div>                 
 		            <div class='player-bat-stats'>          
 		                <script>
 					            var ctx = document.getElementById('my-chart-".$i."').getContext('2d');      
@@ -113,7 +120,7 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 					                    labels: ['".$player_1_bat_stats_keys[$i]."'],    
 					                    datasets: [
 					                    {
-					                        label: '".explode("(", $player_1_name)[0]."',
+					                        label: '".$player_1_clean_name."',
 	                                        pointStyle: 'line',      
 					                        backgroundColor: '#ff1e50',
 					                        <!--borderColor: 'darkgreen',	-->		                      
@@ -121,7 +128,7 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 					                        data: [".$player_1_bat_stats_val[$i]."],                       
 					                    },
 					                    {
-					                        label: '".explode("(", $player_2_name)[0]."',
+					                        label: '".$player_2_clean_name."',
 	                                        pointStyle: 'line',      
 					                        backgroundColor: '#009051',
 					                        <!--borderColor: 'darkgreen',	-->		                      
