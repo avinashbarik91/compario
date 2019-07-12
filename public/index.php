@@ -1,5 +1,6 @@
 <html>
 	<head>
+		<title>Compario | Compare Head-to-Head Player Stats</title>
 		<link href="https://fonts.googleapis.com/css?family=Anton|Lato&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 		<link rel="stylesheet" href="stylesheet/bootstrap.min.css">
@@ -78,10 +79,32 @@
     			padding: 30px;
     			border-radius: 100px;
 			}
+
+			.loader {
+				background-image: url(static/flat-bouncing-circle-loading-icon.svg);
+			    width: 50px;
+			    height: 50px;
+			    background-size: cover;
+			    position: absolute;
+			    top: 59%;
+			    right: 49%;
+			    display: none;
+			}
 			
 		</style>		
 	</head>
 	<body>
+		<!-- <nav class="navbar navbar-dark bg-dark navbar-expand-sm">
+			<div class="container">				
+				<span class="navbar-brand">Compario</span>
+				<div class="collapse navbar-collapse" id="myTogglerNav">
+					<div class="navbar-nav ml-auto">
+						<a class="nav-item nav-link" href="#">About</a>										
+					</div>
+				</div>
+			</div>
+		</nav> -->
+
 		<div id="body-content-wrapper">
 			<div id="header-wrapper">
 				<h1>Compario</h1>
@@ -109,7 +132,7 @@
 			</div>
 
 		</div>
-
+		<div class='loader'></div>
 		<div id='player-comparison-wrapper'>
 			<!-- Player Comparison -->
 		</div>

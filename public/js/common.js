@@ -4,7 +4,7 @@ function getPlayers(e)
     e.preventDefault();
     var player1 = $("input[name=player_1]").val();
     var player2 = $("input[name=player_2]").val();    
-    $("#content").html("Loading...");
+    $("#content").html("<p>Loading Player List and Options</p>");
 
     $.ajax({
         url: "ajax_handler.php",
@@ -44,7 +44,8 @@ function comparePlayers(e)
     var matchType = $("#match-type-selected option:selected").val();
     var statType  = $("#stat-type-selected option:selected").val();
     
-    $("#player-comparison-wrapper").html("Crunching Data...");
+    $(".loader").show();
+    $("#player-comparison-wrapper").html("<p><br/><br/>Crunching Data...</p>");
 
     $.ajax({
         url: "ajax_handler.php",
@@ -61,7 +62,8 @@ function comparePlayers(e)
             },
         success: function(data){
             if (data.output != null)
-            {                
+            { 
+                $(".loader").hide();               
                 $("#player-comparison-wrapper").html(data.output);
             }
             else
