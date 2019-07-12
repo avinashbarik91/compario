@@ -42,6 +42,7 @@ function comparePlayers(e)
     var player2Name = $("#player-2-selected option:selected").text();
 
     var matchType = $("#match-type-selected option:selected").val();
+    var statType  = $("#stat-type-selected option:selected").val();
     
     $("#player-comparison-wrapper").html("Crunching Data...");
 
@@ -55,7 +56,8 @@ function comparePlayers(e)
                 player_2_link: player2Link,
                 player_1_name: player1Name,
                 player_2_name: player2Name,
-                match_type: matchType
+                match_type: matchType,
+                stat_type: statType
             },
         success: function(data){
             if (data.output != null)

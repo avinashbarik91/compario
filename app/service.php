@@ -47,6 +47,7 @@ function render_player_list($player_1, $player_2)
 	$player_2_list = read_player_list($player_2);
 	$html = "";
 
+	//Player 1
 	if (!empty($player_1_list))
 	{		
 		$html .=  "<h3>Select Player 1</h3>";
@@ -60,6 +61,7 @@ function render_player_list($player_1, $player_2)
 		$html .=  "</select>";
 	}
 
+	//Player 2
 	if (!empty($player_2_list))
 	{		
 		$html .=  "<h3>Select Player 2</h3>";
@@ -73,51 +75,78 @@ function render_player_list($player_1, $player_2)
 		$html .=  "</select>";
 	}
 
-		$html .=  "<h3>Select Match Type</h3>";
-		$html .=  "<select id='match-type-selected'>";
-		
-		foreach ($GLOBALS['match_types'] as $match_type) 
-		{
-			$html .=  "<option value='" . $match_type . "'>" . $match_type . "</option>";
-		}
+	//Match Type
+	$html .=  "<h3>Select Match Type</h3>";
+	$html .=  "<select id='match-type-selected'>";
+	
+	foreach ($GLOBALS['match_types'] as $match_type) 
+	{
+		$html .=  "<option value='" . $match_type . "'>" . $match_type . "</option>";
+	}
 
-		$html .=  "</select>";
+	$html .=  "</select>";
+
+	//Batting vs Bowling
+	$html .=  "<h3>Select Stat Type</h3>";
+	$html .=  "<select id='stat-type-selected'>";	
+	$html .=  "<option value='bat'>Batting & Fielding</option>";
+	$html .=  "<option value='bowl'>Bowling</option>";
+	$html .=  "</select>";
 
 	$html .= "<br/><br/><button id='compare-btn' onclick=comparePlayers(event)>Compare</button>";
 
 	return $html;
 }
 
-function read_player_comparison($player_1_link, $player_2_link)
-{
-	$player_1_bat_stats 	= read_batting_and_fielding_stats($player_1_link);
-	$player_1_bowl_stats 	= read_bowling_stats($player_1_link);
-	$player_2_bat_stats 	= read_batting_and_fielding_stats($player_2_link);
-	$player_2_bowl_stats 	= read_bowling_stats($player_2_link);
+function read_player_comparison($player_1_link, $player_2_link, $stat_type)
+{	
+	if ($stat_type == "bat")
+	{ 
+		$player_1_bat_stats 	= read_batting_and_fielding_stats($player_1_link);
+		$player_2_bat_stats 	= read_batting_and_fielding_stats($player_2_link);
 
-	return array(	"player_1_stats" => array("bat" => $player_1_bat_stats, "bowl" => $player_1_bowl_stats), 
-					"player_2_stats" => array("bat" => $player_2_bat_stats, "bowl" => $player_2_bowl_stats)
+		return array(	"player_1_stats" => array("bat" => $player_1_bat_stats), 
+						"player_2_stats" => array("bat" => $player_2_bat_stats)
 				);
+	}
+	else if ($stat_type == "bowl")
+	{
+		$player_1_bowl_stats 	= read_bowling_stats($player_1_link);	
+		$player_2_bowl_stats 	= read_bowling_stats($player_2_link);
+
+		return array(	"player_1_stats" => array("bowl" => $player_1_bowl_stats), 
+						"player_2_stats" => array("bowl" => $player_2_bowl_stats)
+				);
+	}	
 }
 
-function render_players_comparison($player_1_link, $player_1_name, $player_2_link, $player_2_name, $match_type)
+function render_players_comparison($player_1_link, $player_1_name, $player_2_link, $player_2_name, $match_type, $stat_type)
 {
-	$player_stats = read_player_comparison($player_1_link, $player_2_link);
+	$player_stats = read_player_comparison($player_1_link, $player_2_link, $stat_type);
+	
+	if ($stat_type == "bat")
+	{
+		$stats_keys = $GLOBALS['bat_stat_category'];
+		$stat_full_name = "Batting and Fielding";	
+	}
+	else if ($stat_type == "bowl")
+	{
+		$stats_keys = $GLOBALS['bowl_stat_category'];
+		$stat_full_name = "Bowling";	
+	}	
 
-	$key = $match_type;
-	$player_1_bat_stats_keys = $GLOBALS['bat_stat_category'];
-	$player_1_bat_stats_val  = array_values($player_stats['player_1_stats']['bat'][$key]);
-	$player_2_bat_stats_val  = array_values($player_stats['player_2_stats']['bat'][$key]);
+	$player_1_stats_val  = array_values($player_stats['player_1_stats'][$stat_type][$match_type]);
+	$player_2_stats_val  = array_values($player_stats['player_2_stats'][$stat_type][$match_type]);
 
 	$player_1_clean_name = explode("(", $player_1_name)[0];
 	$player_2_clean_name = explode("(", $player_2_name)[0];
 
-	$html = "<i class='fas fa-poll'></i><h3>Head-to-Head ".$key." Career Comparison</h3>";
+	$html = "<i class='fas fa-poll'></i><h3>Head-to-Head " . $match_type . " " . $stat_full_name . " Career Comparison</h3>";
 	$html .= "<h2>" . $player_1_clean_name . "  \tvs\t  " . $player_2_clean_name . "</h2>";
 	
-	for ($i = 0; $i < sizeof($player_1_bat_stats_keys); $i++)
+	for ($i = 0; $i < sizeof($stats_keys); $i++)
 	{
-		$html .= "<div class='xyz'><h4 class='chart-heading'>".$player_1_bat_stats_keys[$i]."<h4><canvas id='my-chart-".$i."'></canvas></div>                 
+		$html .= "<div class='xyz'><h4 class='chart-heading'>".$stats_keys[$i]."<h4><canvas id='my-chart-".$i."'></canvas></div>                 
 		            <div class='player-bat-stats'>          
 		                <script>
 					            var ctx = document.getElementById('my-chart-".$i."').getContext('2d');      
@@ -128,7 +157,7 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 					                responsive: true,
 	    							maintainAspectRatio: false,      
 					                data: {
-					                    labels: ['".$player_1_bat_stats_keys[$i]."'],    
+					                    labels: ['".$stats_keys[$i]."'],    
 					                    datasets: [
 					                    {
 					                        label: '".$player_1_clean_name."',
@@ -136,7 +165,7 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 					                        backgroundColor: '#ff1e50',
 					                        <!--borderColor: 'darkgreen',	-->		                      
 		                					borderWidth: 1,
-					                        data: [".$player_1_bat_stats_val[$i]."],                       
+					                        data: [".$player_1_stats_val[$i]."],                       
 					                    },
 					                    {
 					                        label: '".$player_2_clean_name."',
@@ -144,7 +173,7 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 					                        backgroundColor: '#009051',
 					                        <!--borderColor: 'darkgreen',	-->		                      
 		                					borderWidth: 1,
-					                        data: [".$player_2_bat_stats_val[$i]."],                        
+					                        data: [".$player_2_stats_val[$i]."],                        
 					                    }
 					                    ]
 					                },
