@@ -45,13 +45,20 @@ function render_player_list($player_1, $player_2)
 {
 	$player_1_list = read_player_list(str_replace(" ", "+", $player_1));
 	$player_2_list = read_player_list($player_2);
-	$html = "";
+	
+	$html = "
+
+	<div class='container select-compare-options'>
+					<legend>Select Comparison Options</legend>
+					<div class='row'>						
+	";
 
 	//Player 1
 	if (!empty($player_1_list))
-	{		
-		$html .=  "<h3>Select Player 1</h3>";
-		$html .=  "<select id='player-1-selected'>";
+	{	
+		$html .= "<div class='col-md-3'>";	
+		$html .=  "<label for='player-1-selected'>Select Player 1</label>";
+		$html .=  "<select class='form-control' id='player-1-selected'>";
 
 		foreach ($player_1_list as $player) 
 		{
@@ -59,13 +66,15 @@ function render_player_list($player_1, $player_2)
 		}
 
 		$html .=  "</select>";
+		$html .=  "</div>";
 	}
 
 	//Player 2
 	if (!empty($player_2_list))
-	{		
-		$html .=  "<h3>Select Player 2</h3>";
-		$html .=  "<select id='player-2-selected'>";
+	{	
+		$html .= "<div class='col-md-3'>";		
+		$html .=  "<label for='player-2-selected'>Select Player 2</label>";
+		$html .=  "<select class='form-control' id='player-2-selected'>";
 		
 		foreach ($player_2_list as $player) 
 		{
@@ -73,11 +82,13 @@ function render_player_list($player_1, $player_2)
 		}
 
 		$html .=  "</select>";
+		$html .=  "</div>";
 	}
 
 	//Match Type
-	$html .=  "<h3>Select Match Type</h3>";
-	$html .=  "<select id='match-type-selected'>";
+	$html .=  "<div class='col-md-3'>";	
+	$html .=  "<label for='match-type-selected'>Select Match Type</label>";
+	$html .=  "<select class='form-control' id='match-type-selected'>";
 	
 	foreach ($GLOBALS['match_types'] as $match_type) 
 	{
@@ -85,15 +96,22 @@ function render_player_list($player_1, $player_2)
 	}
 
 	$html .=  "</select>";
+	$html .=  "</div>";
 
 	//Batting vs Bowling
-	$html .=  "<h3>Select Stat Type</h3>";
-	$html .=  "<select id='stat-type-selected'>";	
+	$html .=  "<div class='col-md-3'>";	
+	$html .=  "<label for='stat-type-selected'>Select Stat Type</label>";
+	$html .=  "<select class='form-control' id='stat-type-selected'>";	
 	$html .=  "<option value='bat'>Batting & Fielding</option>";
 	$html .=  "<option value='bowl'>Bowling</option>";
 	$html .=  "</select>";
+	$html .=  "</div>";
 
-	$html .= "<br/><br/><button id='compare-btn' onclick=comparePlayers(event)>Compare</button>";
+	$html .=  "</div><div class='row pt-2'><div class='col-md-4 offset-md-4 '>";
+	$html .=  "<button id='compare-btn' class='btn btn-success form-control' onclick=comparePlayers(event)>Compare</button>";
+	$html .=  "</div></div>";
+
+	$html .= "</div>";
 
 	return $html;
 }
