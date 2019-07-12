@@ -9,7 +9,7 @@ if (isset($_POST['function']) && $_POST['function'] == "readPlayerList")
 }
 else if (isset($_POST['function']) && $_POST['function'] == "comparePlayers")
 {
-	echo json_encode(array("output" => render_players_comparison($_POST['player_1_link'], $_POST['player_1_name'], $_POST['player_2_link'], $_POST['player_2_name'])));
+	echo json_encode(array("output" => render_players_comparison($_POST['player_1_link'], $_POST['player_1_name'], $_POST['player_2_link'], $_POST['player_2_name'], $_POST['match_type'])));
 	exit();
 }
 

@@ -1,5 +1,6 @@
 <?php 
 
+$match_types = array("Tests", "ODIs", "T20Is", "First-class", "List A", "T20s");
 $bat_stat_category  = array("Matches", "Innings", "Not Outs", "Runs", "Highest Score", "Batting Average", "Balls Faced", "Strike Rate", "100s", "50s", "4s", "6s", "Catches Taken", "Stumpings Made");
 $bowl_stat_category = array("Matches", "Innings", "Balls Bowled", "Runs Conceded", "Wickets Taken", "Best Bowling Innings", "Best Bowling Match", "Bowling Average", "Economy Rate", "Bowling Strike Rate", "4 Wicket Haul", "5 Wicket Haul", "10 Wicket Haul");
 
@@ -72,6 +73,16 @@ function render_player_list($player_1, $player_2)
 		$html .=  "</select>";
 	}
 
+		$html .=  "<h3>Select Match Type</h3>";
+		$html .=  "<select id='match-type-selected'>";
+		
+		foreach ($GLOBALS['match_types'] as $match_type) 
+		{
+			$html .=  "<option value='" . $match_type . "'>" . $match_type . "</option>";
+		}
+
+		$html .=  "</select>";
+
 	$html .= "<br/><br/><button id='compare-btn' onclick=comparePlayers(event)>Compare</button>";
 
 	return $html;
@@ -89,11 +100,11 @@ function read_player_comparison($player_1_link, $player_2_link)
 				);
 }
 
-function render_players_comparison($player_1_link, $player_1_name, $player_2_link, $player_2_name)
+function render_players_comparison($player_1_link, $player_1_name, $player_2_link, $player_2_name, $match_type)
 {
 	$player_stats = read_player_comparison($player_1_link, $player_2_link);
 
-	$key = "ODIs";
+	$key = $match_type;
 	$player_1_bat_stats_keys = $GLOBALS['bat_stat_category'];
 	$player_1_bat_stats_val  = array_values($player_stats['player_1_stats']['bat'][$key]);
 	$player_2_bat_stats_val  = array_values($player_stats['player_2_stats']['bat'][$key]);
