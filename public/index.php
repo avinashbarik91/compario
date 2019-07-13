@@ -266,7 +266,7 @@
 			<p>Simple to read statistics with the latest results and scores for cricket players. Search and select players, stat type and match type to get started.</p>
 		</div>
 		<div id='coming-soon'>
-			<p>Compario is in beta and there are known bugs that will be resolved shortly. Also, more in-depth comparisons, date based filters and player profiles is coming soon.</p>
+			<p>Compario is in beta. More in-depth comparisons, date based filters and player profiles is coming soon.</p>
 		</div>
 		<h5 class="mb-2">Share your thoughts</h5>
 							<hr/>
