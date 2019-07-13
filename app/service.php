@@ -120,20 +120,20 @@ function read_player_comparison($player_1_link, $player_2_link, $stat_type)
 {	
 	if ($stat_type == "bat")
 	{ 
-		$player_1_bat_stats 	= read_batting_and_fielding_stats($player_1_link);
-		$player_2_bat_stats 	= read_batting_and_fielding_stats($player_2_link);
+		$player_1_bat_stats 	= read_batting_and_fielding_stats($player_1_link, $player_1_image);
+		$player_2_bat_stats 	= read_batting_and_fielding_stats($player_2_link, $player_2_image);
 
-		return array(	"player_1_stats" => array("bat" => $player_1_bat_stats), 
-						"player_2_stats" => array("bat" => $player_2_bat_stats)
+		return array(	"player_1_stats" => array("bat" => $player_1_bat_stats, "image" => $player_1_image), 
+						"player_2_stats" => array("bat" => $player_2_bat_stats, "image" => $player_2_image)
 				);
 	}
 	else if ($stat_type == "bowl")
 	{
-		$player_1_bowl_stats 	= read_bowling_stats($player_1_link);	
-		$player_2_bowl_stats 	= read_bowling_stats($player_2_link);
+		$player_1_bowl_stats 	= read_bowling_stats($player_1_link, $player_1_image);	
+		$player_2_bowl_stats 	= read_bowling_stats($player_2_link, $player_2_image);
 
-		return array(	"player_1_stats" => array("bowl" => $player_1_bowl_stats), 
-						"player_2_stats" => array("bowl" => $player_2_bowl_stats)
+		return array(	"player_1_stats" => array("bowl" => $player_1_bowl_stats, "image" => $player_1_image), 
+						"player_2_stats" => array("bowl" => $player_2_bowl_stats, "image" => $player_2_image)
 				);
 	}	
 }
@@ -159,12 +159,47 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 	$player_1_clean_name = explode("(", $player_1_name)[0];
 	$player_2_clean_name = explode("(", $player_2_name)[0];
 
+	$player_1_image = $player_stats['player_1_stats']['image'];
+	$player_2_image = $player_stats['player_2_stats']['image'];
+
 	$html = "<i class='fas fa-poll'></i><h3>Head-to-Head " . $match_type . " " . $stat_full_name . " Career Comparison</h3>";
-	$html .= "<h2>" . $player_1_clean_name . "  \tvs\t  " . $player_2_clean_name . "</h2>";
+	$html .= "<div class='container player-profiles'>";
+	$html .= "<div class='row'>";
+
+	$html .= "<div class='offset-md-3 col-md-2'>";
+	$html .= "<img id='p1-img' src='".$player_1_image."'/><p>".$player_1_clean_name."</p>";
+	$html .= "</div>";
+
+	$html .= "<div class='col-md-2'>";
+	$html .= "<p class='display-4'> Vs </p>";
+	$html .= "</div>";
+
+	$html .= "<div class='col-md-2'>";
+	$html .= "<img id='p2-img' src='".$player_2_image."'/><p>".$player_2_clean_name."</p>";
+	$html .= "</div>";
+
+	$html .= "</div></div>";	
 	
 	for ($i = 0; $i < sizeof($stats_keys); $i++)
 	{
-		$html .= "<div class='xyz'><h4 class='chart-heading'>".$stats_keys[$i]."<h4><canvas id='my-chart-".$i."'></canvas></div>                 
+		if ($stats_keys[$i] == "Best Bowling Innings" || 
+			$stats_keys[$i] == "Best Bowling Match" || 
+			$stats_keys[$i] == "Bowling Average" || 
+			$stats_keys[$i] == "Bowling Strike Rate" || 
+			($player_1_stats_val[$i] == "" && $player_2_stats_val[$i]))
+		{
+			$html_2 .= "<div class='charts'><h4 class='chart-heading'>".$stats_keys[$i]."</h4>
+						
+							<div class='player-bat-stats diff'>
+							<span class='sp-first'></span><p>".$player_1_clean_name . "-" . $player_1_stats_val[$i]."</p>
+							<span class='sp-second'></span><p>".$player_2_clean_name . "-" . $player_2_stats_val[$i]."</p>
+							</div>
+						
+						</div>";             
+			continue;
+		}
+
+		$html .= "<div class='charts'><h4 class='chart-heading'>".$stats_keys[$i]."</h4><canvas id='my-chart-".$i."'></canvas></div>                 
 		            <div class='player-bat-stats'>          
 		                <script>
 					            var ctx = document.getElementById('my-chart-".$i."').getContext('2d');      
@@ -241,14 +276,20 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 		            </div>";
 	}
 
+	if ($html_2 != "")
+	{
+		return $html . $html_2;
+	}
+
 	return $html;
 }
 
-function read_batting_and_fielding_stats($player_link)
+function read_batting_and_fielding_stats($player_link, &$player_image)
 {
 	//$scraper_api 		= "http://api.scraperapi.com?api_key=e77ad5342cca94d32c633c4c836e7813&url=";
 	$scraper_api 		= "";
-	$data 				= file_get_contents($scraper_api . "http://www.espncricinfo.com" . $player_link);	
+	$data 				= file_get_contents($scraper_api . "http://www.espncricinfo.com" . $player_link);
+	$player_image 		= read_player_profile($data)['image'];	
 	$bat_field_table 	= explode('<table class="engineTable"', $data)[1];
 	$bat_field_body  	= explode('<tbody>', $bat_field_table)[1];
 	$bat_field_td   	= explode('</td>', $bat_field_body);
@@ -284,11 +325,23 @@ function read_batting_and_fielding_stats($player_link)
 	return $stat_group_array;
 }
 
-function read_bowling_stats($player_link)
+function read_player_profile($data)
+{
+	$link = explode('/inline/', $data)[1];
+	$link = trim(explode('" title="', $link)[0]);
+	$player_image = "http://www.espncricinfo.com/inline/" . $link; 
+	$player_image = "https://anaixnggen.cloudimg.io/crop/160x200/x/".$player_image;
+	$profile = null;
+	
+	return array("image" => $player_image, "profile" => $profile);
+}
+
+function read_bowling_stats($player_link, &$player_image)
 {
 	//$scraper_api 		= "http://api.scraperapi.com?api_key=e77ad5342cca94d32c633c4c836e7813&url=";
 	$scraper_api 		= "";
-	$data 				= file_get_contents($scraper_api . "http://www.espncricinfo.com" . $player_link);	
+	$data 				= file_get_contents($scraper_api . "http://www.espncricinfo.com" . $player_link);
+	$player_image 		= read_player_profile($data)['image'];	
 	$bowl_table 		= explode('<table class="engineTable"', $data)[2];
 	$bowl_table_body  	= explode('<tbody>', $bowl_table)[1];
 	$bowl_td   			= explode('</td>', $bowl_table_body);
