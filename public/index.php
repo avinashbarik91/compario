@@ -84,6 +84,25 @@
 			    box-shadow: 5px 6px 10px 2px #050b28;
 			}
 
+			@media screen and (max-width:1100px) {
+
+				#body-content-wrapper {
+				  	border-bottom-left-radius: 100px;
+				    border-bottom-right-radius: 100px;
+				}
+			}
+
+			@media screen and (max-width:767px) {	
+				.player-profiles .display-4 {
+					margin-top: 0px !important;
+				}
+
+				#coming-soon {
+					display: none;
+				}
+
+			}
+
 			#header-wrapper {
 				padding-top: 30px;				
 			}
@@ -255,7 +274,7 @@
 
 				<div class="container mb-4 search-form">
 					<div class='row'>
-							<div class='col-md-5'><i class="fas fa-user-circle"></i><input type='text' class="form-control text-right" name='player_1' value='' placeholder='Search Player 1 Name (Ex: Dhoni)'/></div>
+							<div class='col-md-5'><i class="fas fa-user-circle"></i><input type='text' class="form-control text-sm-left text-md-right" name='player_1' value='' placeholder='Search Player 1 Name (Ex: Dhoni)'/></div>
 							<div class='col-md-2'><span class='vs-text'>vs</span></div>
 							<div class='col-md-5'><i class="fas fa-user-circle"></i><input type='text' class="form-control" name='player_2' value='' placeholder='Search Player 2 Name (Ex: Gilchrist)'/></div>
 							<div class='offset-md-4 col-md-4'><button class="btn btn-success" onclick="getPlayers(event)">Search</button></div>													
@@ -276,7 +295,7 @@
 			<p>Simple to read statistics with the latest results and scores for cricket players. Search and select players, stat type and match type to get started.</p>
 		</div>
 		<div id='coming-soon'>
-			<p>Compario is in beta. More in-depth comparisons, date based filters and player profiles is coming soon.</p>
+			<p>Compario is in beta. Website is best viewed on larger screens such as laptops. More in-depth comparisons, date based filters and player profiles is coming soon.</p>
 		</div>		
                             
 		<div class="footer" style="height: 50px;">
