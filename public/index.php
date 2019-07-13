@@ -10,6 +10,7 @@
 		<meta property='og:description' content='Compario - Simple head-to-head comparison for cricket players'/>
 		<meta property='og:url' content='https://compario.dev'/>
 		<meta property='og:type' content='Open Source'/>
+		<link rel="icon" type="image/png" sizes="96x96" href="/static/favicon-96x96.png">
 		<link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Righteous&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 		<link rel="stylesheet" href="stylesheet/bootstrap.min.css">
@@ -19,6 +20,15 @@
 		<script src="js/popper.js"></script>		
 		<script src="js/bootstrap.min.js"></script>
 		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script> -->
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-143752108-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-143752108-1');
+		</script>
 
 		<style>
 			
