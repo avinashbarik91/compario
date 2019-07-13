@@ -16,12 +16,17 @@
 			body {
 				/*background-image: linear-gradient(to right, #233d7b , #071842);*/
 				background-image: radial-gradient(circle, #1d215a, #171b4e, #040b27);
-				color: white;
+				color: #EDF5E1 !important;
 				text-align: center;
 				margin: 0px;
 				font-family: 'Josefin Sans', sans-serif;
 				min-height: 100%;
 				position: relative;
+			}
+
+			input[type="text"], select option, .form-control {
+			 	background-color : #EDF5E1 !important; 
+			 	color: #05386b !important;
 			}
 
 			#player-comparison-wrapper {
@@ -50,13 +55,14 @@
 
 			#body-content-wrapper {
 				/*background: url("static/intro-bg.png");*/
-				background-image: linear-gradient(to right, #f11f53 , #071842);
+				/*background-image: linear-gradient(to right, #f11f53 , #071842);*/
+				background-image: linear-gradient(to right, #5cdb95 , #05386b);
 				min-height: 650px;
 			    background-size: cover;
 			    border-bottom-left-radius: 500px;
 			    border-bottom-right-radius: 500px;
-			    border-bottom: 4px solid #ff1e50;
-			    box-shadow: 5px 6px 10px 2px ##050b28;
+			   /* border-bottom: 4px solid #ff1e50;*/
+			    box-shadow: 5px 6px 10px 2px #050b28;
 			}
 
 			#header-wrapper {
@@ -82,7 +88,7 @@
 			}
 
 			.select-compare-options {
-				background: rgba(35, 40, 130, 0.4);
+				background: rgba(5, 57, 107, 0.4);
     			padding: 30px;
     			border-radius: 20px;
 			}
@@ -100,11 +106,7 @@
 
 			.player-profiles {
 				font-size: 1.4em;
-			}
-
-			.player-profiles .display-4{
-				margin-top: 50%;
-			}
+			}			
 
 			.player-profiles img{
 				border: 1px solid white;
@@ -120,7 +122,7 @@
 				position: absolute;
 				bottom:0;
 				width: 100%;
-				background-color: #f11f53;
+				background-color: #05386b;
 				bottom: -70px;
 			}
 
@@ -142,11 +144,33 @@
 				font-size: 1.2em;
 			}
 
-			.player-bat-stats.diff {
+			/*.player-bat-stats.diff {
 				width: 100%;
 			    height: auto;
 			    text-align: center;
 			    margin-top: 10%;
+			}*/
+
+			.stat-play-num {
+				font-size: 2rem;
+			}
+
+			.player-stat-chart-container .row {
+				margin-bottom: 15px;
+			}
+
+			.bar-1 {
+				border-top-left-radius: 25px;
+				border-bottom-left-radius: 25px;
+				height: 30px;
+				background-color:#5cdb95; 
+			}
+
+			.bar-2 {
+				border-top-right-radius: 25px;
+				border-bottom-right-radius: 25px;
+				height: 30px;
+				background-color:#05386b; 
 			}
 
 			.player-bat-stats.diff span {
@@ -154,11 +178,11 @@
 			    height: 12px;
 			    display: inline-block;			    
 			    margin: 4px;
-			    background-color: #ff1e50;
+			    background-color: #5cdb95;
 			}
 
 			.player-bat-stats.diff .sp-second {
-				background-color: #009051 !important;
+				background-color: #05386b !important;
 			}
 
 			.vs-text {
@@ -166,13 +190,28 @@
 				font-family: 'Righteous', sans-serif;
 			}
 
-			.search-form button {
+			.btn {
 				width: 150px;
 			}
 
 			.fas {
 				font-size: 3em;
 			} 
+
+			legend {
+				font-family: 'Righteous', sans-serif;
+			}
+
+			.player-name-post {
+				font-family: 'Righteous', sans-serif;
+				font-size: 2rem;
+			}
+
+			.player-profiles .display-4 {
+				font-family: 'Righteous', sans-serif;
+				margin-top: 38%;
+				font-size: 5rem;
+			}
 			
 		</style>		
 	</head>

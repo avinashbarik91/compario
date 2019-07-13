@@ -108,7 +108,7 @@ function render_player_list($player_1, $player_2)
 	$html .=  "</div>";
 
 	$html .=  "</div><div class='row pt-2'><div class='col-md-4 offset-md-4 '>";
-	$html .=  "<button id='compare-btn' class='btn btn-success form-control' onclick=comparePlayers(event)>Compare</button>";
+	$html .=  "<button id='compare-btn' class='btn btn-success' onclick=comparePlayers(event)>Compare</button>";
 	$html .=  "</div></div>";
 
 	$html .= "</div>";
@@ -138,7 +138,101 @@ function read_player_comparison($player_1_link, $player_2_link, $stat_type)
 	}	
 }
 
-function render_players_comparison($player_1_link, $player_1_name, $player_2_link, $player_2_name, $match_type, $stat_type)
+function render_players_comparison($player_1_link, $player_1_name, $player_2_link, $player_2_name, $match_type, $stat_type, $content_width)
+{
+	$player_stats = read_player_comparison($player_1_link, $player_2_link, $stat_type);
+	
+	if ($stat_type == "bat")
+	{
+		$stats_keys = $GLOBALS['bat_stat_category'];
+		$stat_full_name = "Batting and Fielding";	
+	}
+	else if ($stat_type == "bowl")
+	{
+		$stats_keys = $GLOBALS['bowl_stat_category'];
+		$stat_full_name = "Bowling";	
+	}	
+
+	$player_1_stats_val  = array_values($player_stats['player_1_stats'][$stat_type][$match_type]);
+	$player_2_stats_val  = array_values($player_stats['player_2_stats'][$stat_type][$match_type]);
+
+	$player_1_clean_name = explode("(", $player_1_name)[0];
+	$player_2_clean_name = explode("(", $player_2_name)[0];
+
+	$player_1_image = $player_stats['player_1_stats']['image'];
+	$player_2_image = $player_stats['player_2_stats']['image'];
+
+	$html = "<i class='fas fa-poll'></i><h3>Head-to-Head " . $match_type . " " . $stat_full_name . " Career Comparison</h3>";
+	$html .= "<div class='container player-profiles'>";
+	$html .= "<div class='row'>";
+
+	$html .= "<div class='offset-md-2 col-md-3'>";
+	$html .= "<img id='p1-img' src='".$player_1_image."'/><p class='player-name-post'>".$player_1_clean_name."</p>";
+	$html .= "</div>";
+
+	$html .= "<div class='col-md-2'>";
+	$html .= "<p class='display-4'> vs </p>";
+	$html .= "</div>";
+
+	$html .= "<div class='col-md-3'>";
+	$html .= "<img id='p2-img' src='".$player_2_image."'/><p class='player-name-post'>".$player_2_clean_name."</p>";
+	$html .= "</div>";
+
+	$html .= "</div></div>";	
+	
+	$html .= "<div class='container player-stat-chart-container'>";
+
+	for ($i = 0; $i < sizeof($stats_keys); $i++)
+	{
+		$player_1_stats_val[$i] = $player_1_stats_val[$i] == "" ? 0 : $player_1_stats_val[$i];
+		$player_2_stats_val[$i] = $player_2_stats_val[$i] == "" ? 0 : $player_2_stats_val[$i];
+
+		$html .= "<div class='row'>";
+
+		$max_width = (0.2)*$content_width; 
+
+		if ($player_1_stats_val[$i] > $player_2_stats_val[$i])
+		{
+			$diff_percent = $player_1_stats_val[$i]/$player_2_stats_val[$i];
+			$player_1_bar_width = $max_width;
+			$player_2_bar_width = $player_1_bar_width/$diff_percent;
+		}
+		else if ($player_1_stats_val[$i] < $player_2_stats_val[$i])
+		{
+			$diff_percent = $player_2_stats_val[$i]/$player_1_stats_val[$i];
+			$player_2_bar_width = $max_width;
+			$player_1_bar_width = $player_2_bar_width/$diff_percent;
+		}
+		else
+		{
+			$player_1_bar_width = $max_width / 2;
+			$player_2_bar_width = $max_width / 2;
+		}
+
+		$html .= "<div class='col-md-12'>
+					<h4 class='chart-heading'>".$stats_keys[$i]."</h4>		
+
+					<span class='stat-play-num'>" . $player_1_stats_val[$i] . "</span>
+					<span class='bar-1' style='width: ".$player_1_bar_width."px; display:inline-block;'></span>
+					<span class='bar-2' style='width: ".$player_2_bar_width."px; display:inline-block;'></span>
+					<span class='stat-play-num'>" . $player_2_stats_val[$i] . "</span>
+
+				  </div>";
+
+		$html .= "</div>";		   
+	}
+
+	$html .= "</div>";
+
+	if ($html_2 != "")
+	{
+		return $html . $html_2;
+	}
+
+	return $html;
+}
+
+/*function render_players_comparison($player_1_link, $player_1_name, $player_2_link, $player_2_name, $match_type, $stat_type)
 {
 	$player_stats = read_player_comparison($player_1_link, $player_2_link, $stat_type);
 	
@@ -167,15 +261,15 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 	$html .= "<div class='row'>";
 
 	$html .= "<div class='offset-md-3 col-md-2'>";
-	$html .= "<img id='p1-img' src='".$player_1_image."'/><p>".$player_1_clean_name."</p>";
+	$html .= "<img id='p1-img' src='".$player_1_image."'/><p class='player-name-post'>".$player_1_clean_name."</p>";
 	$html .= "</div>";
 
 	$html .= "<div class='col-md-2'>";
-	$html .= "<p class='display-4'> Vs </p>";
+	$html .= "<p class='display-4'> vs </p>";
 	$html .= "</div>";
 
 	$html .= "<div class='col-md-2'>";
-	$html .= "<img id='p2-img' src='".$player_2_image."'/><p>".$player_2_clean_name."</p>";
+	$html .= "<img id='p2-img' src='".$player_2_image."'/><p class='player-name-post'>".$player_2_clean_name."</p>";
 	$html .= "</div>";
 
 	$html .= "</div></div>";	
@@ -215,7 +309,7 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 					                    {
 					                        label: '".$player_1_clean_name."',
 	                                        pointStyle: 'line',      
-					                        backgroundColor: '#ff1e50',
+					                        backgroundColor: '#5cdb95',
 					                        <!--borderColor: 'darkgreen',	-->		                      
 		                					borderWidth: 1,
 					                        data: [".$player_1_stats_val[$i]."],                       
@@ -223,7 +317,7 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 					                    {
 					                        label: '".$player_2_clean_name."',
 	                                        pointStyle: 'line',      
-					                        backgroundColor: '#009051',
+					                        backgroundColor: '#05386b',
 					                        <!--borderColor: 'darkgreen',	-->		                      
 		                					borderWidth: 1,
 					                        data: [".$player_2_stats_val[$i]."],                        
@@ -282,7 +376,7 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 	}
 
 	return $html;
-}
+}*/
 
 function read_batting_and_fielding_stats($player_link, &$player_image)
 {
