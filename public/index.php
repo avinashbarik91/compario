@@ -152,7 +152,7 @@
 			}*/
 
 			.stat-play-num {
-				font-size: 2rem;
+				font-size: 1rem;
 			}
 
 			.player-stat-chart-container .row {
@@ -163,7 +163,7 @@
 				border-top-left-radius: 25px;
 				border-bottom-left-radius: 25px;
 				height: 30px;
-				background-color:#5cdb95; 
+				background-color:#5cdb95; 				
 			}
 
 			.bar-2 {

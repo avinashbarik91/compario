@@ -189,7 +189,7 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 
 		$html .= "<div class='row'>";
 
-		$max_width = (0.2)*$content_width; 
+		$max_width = (0.3)*$content_width; 
 
 		if ($player_1_stats_val[$i] > $player_2_stats_val[$i])
 		{
@@ -210,7 +210,7 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 		}
 
 		$html .= "<div class='col-md-12'>
-					<h4 class='chart-heading'>".$stats_keys[$i]."</h4>		
+					<h5 class='chart-heading'>".$stats_keys[$i]."</h5>		
 
 					<span class='stat-play-num'>" . $player_1_stats_val[$i] . "</span>
 					<span class='bar-1' style='width: ".$player_1_bar_width."px; display:inline-block;'></span>
