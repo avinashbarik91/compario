@@ -44,74 +44,84 @@ function read_player_list($search_str)
 function render_player_list($player_1, $player_2)
 {
 	$player_1_list = read_player_list(str_replace(" ", "+", $player_1));
-	$player_2_list = read_player_list($player_2);
+	$player_2_list = read_player_list(str_replace(" ", "+", $player_2));	
 	
 	$html = "
 
 	<div class='container select-compare-options'>
 					<legend>Select Comparison Options</legend>
 					<div class='row'>						
-	";
+	";	
 
-	//Player 1
-	if (!empty($player_1_list))
-	{	
-		$html .= "<div class='col-md-3'>";	
-		$html .=  "<label for='player-1-selected'>Select Player 1</label>";
-		$html .=  "<select class='form-control' id='player-1-selected'>";
-
-		foreach ($player_1_list as $player) 
-		{
-			$html .=  "<option data-index='" . $player->url . "' value='" . $player->id . "'>" . $player->name . "</option>";
-		}
-
-		$html .=  "</select>";
-		$html .=  "</div>";
-	}
-
-	//Player 2
-	if (!empty($player_2_list))
-	{	
-		$html .= "<div class='col-md-3'>";		
-		$html .=  "<label for='player-2-selected'>Select Player 2</label>";
-		$html .=  "<select class='form-control' id='player-2-selected'>";
-		
-		foreach ($player_2_list as $player) 
-		{
-			$html .=  "<option data-index='" . $player->url . "' value='" . $player->id . "'>" . $player->name . "</option>";
-		}
-
-		$html .=  "</select>";
-		$html .=  "</div>";
-	}
-
-	//Match Type
-	$html .=  "<div class='col-md-3'>";	
-	$html .=  "<label for='match-type-selected'>Select Match Type</label>";
-	$html .=  "<select class='form-control' id='match-type-selected'>";
-	
-	foreach ($GLOBALS['match_types'] as $match_type) 
+	if (!empty($player_1_list) && !empty($player_2_list))
 	{
-		$html .=  "<option value='" . $match_type . "'>" . $match_type . "</option>";
+		//Player 1
+		if (!empty($player_1_list))
+		{	
+			$html .= "<div class='col-md-3'>";	
+			$html .=  "<label for='player-1-selected'>Select Player 1</label>";
+			$html .=  "<select class='form-control' id='player-1-selected'>";
+
+			foreach ($player_1_list as $player) 
+			{
+				$html .=  "<option data-index='" . $player->url . "' value='" . $player->id . "'>" . $player->name . "</option>";
+			}
+
+			$html .=  "</select>";
+			$html .=  "</div>";
+		}	
+
+		//Player 2
+		if (!empty($player_2_list))
+		{	
+			$html .= "<div class='col-md-3'>";		
+			$html .=  "<label for='player-2-selected'>Select Player 2</label>";
+			$html .=  "<select class='form-control' id='player-2-selected'>";
+			
+			foreach ($player_2_list as $player) 
+			{
+				$html .=  "<option data-index='" . $player->url . "' value='" . $player->id . "'>" . $player->name . "</option>";
+			}
+
+			$html .=  "</select>";
+			$html .=  "</div>";
+		}	
+
+		//Match Type
+		$html .=  "<div class='col-md-3'>";	
+		$html .=  "<label for='match-type-selected'>Select Match Type</label>";
+		$html .=  "<select class='form-control' id='match-type-selected'>";
+		
+		foreach ($GLOBALS['match_types'] as $match_type) 
+		{
+			$html .=  "<option value='" . $match_type . "'>" . $match_type . "</option>";
+		}
+
+		$html .=  "</select>";
+		$html .=  "</div>";
+
+		//Batting vs Bowling
+		$html .=  "<div class='col-md-3'>";	
+		$html .=  "<label for='stat-type-selected'>Select Stat Type</label>";
+		$html .=  "<select class='form-control' id='stat-type-selected'>";	
+		$html .=  "<option value='bat'>Batting & Fielding</option>";
+		$html .=  "<option value='bowl'>Bowling</option>";
+		$html .=  "</select>";
+		$html .=  "</div>";
+
+		$html .=  "</div><div class='row pt-2'><div class='col-md-4 offset-md-4 '>";
+		$html .=  "<button id='compare-btn' class='btn btn-success' onclick=comparePlayers(event)>Compare</button>";
+		$html .=  "</div></div>";
+
+		$html .= "</div>";
 	}
-
-	$html .=  "</select>";
-	$html .=  "</div>";
-
-	//Batting vs Bowling
-	$html .=  "<div class='col-md-3'>";	
-	$html .=  "<label for='stat-type-selected'>Select Stat Type</label>";
-	$html .=  "<select class='form-control' id='stat-type-selected'>";	
-	$html .=  "<option value='bat'>Batting & Fielding</option>";
-	$html .=  "<option value='bowl'>Bowling</option>";
-	$html .=  "</select>";
-	$html .=  "</div>";
-
-	$html .=  "</div><div class='row pt-2'><div class='col-md-4 offset-md-4 '>";
-	$html .=  "<button id='compare-btn' class='btn btn-success' onclick=comparePlayers(event)>Compare</button>";
-	$html .=  "</div></div>";
-
-	$html .= "</div>";
+	else
+	{
+		$html .= "<div class='col-md-12'>";	
+		$html .=  "<label>Oops!.</label>";
+		$html .=  "<p>Could not find any matching players for for your search. If unsure, try entering Last Name or First Name only</p>";		
+		$html .=  "</div>";
+	}
 
 	return $html;
 }
@@ -189,7 +199,7 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 
 		$html .= "<div class='row'>";
 
-		$max_width = (0.3)*$content_width; 
+		$max_width = (0.25)*$content_width; 
 
 		if ($player_1_stats_val[$i] > $player_2_stats_val[$i])
 		{
@@ -224,11 +234,7 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 
 	$html .= "</div>";
 
-	if ($html_2 != "")
-	{
-		return $html . $html_2;
-	}
-
+	
 	return $html;
 }
 

@@ -1,7 +1,16 @@
 <html>
 	<head>
-		<title>Compario | Compare Head-to-Head Player Stats</title>
-		<link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Lato|Righteous&display=swap" rel="stylesheet">
+		<title>Compario | Simple head-to-head comparison for cricket players</title>
+		<meta charset="UTF-8">
+		<meta http-equip="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="Simple head-to-head comparison for cricket players">
+		<meta http-equiv="x-ua-compatible" content="ie-edge">
+		<meta property='og:title' content='Compario'/>		
+		<meta property='og:description' content='Compario - Simple head-to-head comparison for cricket players'/>
+		<meta property='og:url' content='https://www.compario.io'/>
+		<meta property='og:type' content='Open Source'/>
+		<link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Righteous&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 		<link rel="stylesheet" href="stylesheet/bootstrap.min.css">
 		<script src="js/jquery.slim.min.js"></script>
@@ -9,7 +18,7 @@
 		<script src="js/common.js"></script>
 		<script src="js/popper.js"></script>		
 		<script src="js/bootstrap.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script> -->
 
 		<style>
 			
@@ -126,13 +135,20 @@
 				bottom: -70px;
 			}
 
+			#coming-soon {
+				position: absolute;
+				bottom:0;
+				width: 100%;
+				bottom: -28px;
+			}
+
 			.footer a {
-				padding-top: 5px;
-				color: white !important;
+				padding-top: 10px;
+				color: #EDF5E1 !important;
 			}
 
 			.footer p {
-				margin-top: 10px;
+				margin-top: 15px;
 			}
 
 			#compare-form button {
@@ -212,31 +228,26 @@
 				margin-top: 38%;
 				font-size: 5rem;
 			}
+
+			.beta {
+				font-size: 1rem !important;
+				font-family: 'Josefin Sans', sans-serif;;
+			}
 			
 		</style>		
 	</head>
 	<body>
-		<!-- <nav class="navbar navbar-dark bg-dark navbar-expand-sm">
-			<div class="container">				
-				<span class="navbar-brand">Compario</span>
-				<div class="collapse navbar-collapse" id="myTogglerNav">
-					<div class="navbar-nav ml-auto">
-						<a class="nav-item nav-link" href="#">About</a>										
-					</div>
-				</div>
-			</div>
-		</nav> -->
-
+		
 		<div id="body-content-wrapper">
 			<div id="header-wrapper">
-				<h1 class='display-3'>Compario</h1>
+				<h1 class='display-3'>Compario<span class='beta'> v1 Beta</span></h1>
 				<p>Compare cricket player stats head-to-head</p>
 
 				<div class="container mb-4 search-form">
 					<div class='row'>
-							<div class='col-md-5'><i class="fas fa-user-circle"></i><input type='text' class="form-control text-right" name='player_1' value='' placeholder='Search Player 1 Name'/></div>
+							<div class='col-md-5'><i class="fas fa-user-circle"></i><input type='text' class="form-control text-right" name='player_1' value='' placeholder='Search Player 1 Name (Ex: Dhoni)'/></div>
 							<div class='col-md-2'><span class='vs-text'>vs</span></div>
-							<div class='col-md-5'><i class="fas fa-user-circle"></i><input type='text' class="form-control" name='player_2' value='' placeholder='Search Player 2 Name'/></div>
+							<div class='col-md-5'><i class="fas fa-user-circle"></i><input type='text' class="form-control" name='player_2' value='' placeholder='Search Player 2 Name (Ex: Gilchrist)'/></div>
 							<div class='offset-md-4 col-md-4'><button class="btn btn-success" onclick="getPlayers(event)">Search</button></div>													
 					</div>					
 				</div>
@@ -251,10 +262,32 @@
 		<div class='loader'></div>
 		<div id='player-comparison-wrapper'>
 			<!-- Player Comparison -->
+			<i class='fas fa-poll'></i><h3>Head-to-Head Batting, Bowling and Fielding Career Comparison</h3>
+			<p>Simple to read statistics with the latest results and scores for cricket players. Search and select players, stat type and match type to get started.</p>
 		</div>
-
+		<div id='coming-soon'>
+			<p>Compario is in beta and there are known bugs that will be resolved shortly. Also, more in-depth comparisons, date based filters and player profiles is coming soon.</p>
+		</div>
+		<h5 class="mb-2">Share your thoughts</h5>
+							<hr/>
+							<div id="disqus_thread"></div>
+							<script>					
+								var disqus_config = function () {
+								this.page.url = "www.compario.io"
+								this.page.identifier = "www.compario.io"; 
+								};
+								
+								(function() {
+									var d = document, s = d.createElement("script");
+									s.src = "https://compario.disqus.com/embed.js";
+									s.setAttribute("data-timestamp", +new Date());
+									(d.head || d.body).appendChild(s);
+								})();
+							</script>
+							<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 		<div class="footer" style="height: 50px;">
 			<p class="footer-text text-center mb-0 text-light"><a target="_blank" href="https://github.com/avinashbarik91/compario">&#9400; Compario <?php echo date('Y');?> By Avinash Barik  </a></p>
 		</div>
+		<script id="dsq-count-scr" src="//compario.disqus.com/count.js" async></script>
 	</body>
 </html>
