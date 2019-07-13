@@ -8,7 +8,7 @@
 		<meta http-equiv="x-ua-compatible" content="ie-edge">
 		<meta property='og:title' content='Compario'/>		
 		<meta property='og:description' content='Compario - Simple head-to-head comparison for cricket players'/>
-		<meta property='og:url' content='https://www.compario.io'/>
+		<meta property='og:url' content='https://compario.dev'/>
 		<meta property='og:type' content='Open Source'/>
 		<link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Righteous&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -269,22 +269,23 @@
 			<p>Compario is in beta. More in-depth comparisons, date based filters and player profiles is coming soon.</p>
 		</div>
 		<h5 class="mb-2">Share your thoughts</h5>
-							<hr/>
-							<div id="disqus_thread"></div>
-							<script>					
-								var disqus_config = function () {
-								this.page.url = "www.compario.io"
-								this.page.identifier = "www.compario.io"; 
-								};
-								
-								(function() {
-									var d = document, s = d.createElement("script");
-									s.src = "https://compario.disqus.com/embed.js";
-									s.setAttribute("data-timestamp", +new Date());
-									(d.head || d.body).appendChild(s);
-								})();
-							</script>
-							<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+					<hr/>
+					<div id="disqus_thread"></div>
+					<script>
+					var disqus_config = function () {
+					this.page.url = 'compario.dev';  // Replace PAGE_URL with your page's canonical URL variable
+					this.page.identifier = 'compario.dev'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+					};
+					
+					(function() { // DON'T EDIT BELOW THIS LINE
+					var d = document, s = d.createElement('script');
+					s.src = 'https://compario.disqus.com/embed.js';
+					s.setAttribute('data-timestamp', +new Date());
+					(d.head || d.body).appendChild(s);
+					})();
+					</script>
+					<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
 		<div class="footer" style="height: 50px;">
 			<p class="footer-text text-center mb-0 text-light"><a target="_blank" href="https://github.com/avinashbarik91/compario">&#9400; Compario <?php echo date('Y');?> By Avinash Barik  </a></p>
 		</div>
