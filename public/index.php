@@ -84,25 +84,6 @@
 			    box-shadow: 5px 6px 10px 2px #050b28;
 			}
 
-			@media screen and (max-width:1100px) {
-
-				#body-content-wrapper {
-				  	border-bottom-left-radius: 100px;
-				    border-bottom-right-radius: 100px;
-				}
-			}
-
-			@media screen and (max-width:767px) {	
-				.player-profiles .display-4 {
-					margin-top: 0px !important;
-				}
-
-				#coming-soon {
-					display: none;
-				}
-
-			}
-
 			#header-wrapper {
 				padding-top: 30px;				
 			}
@@ -204,6 +185,10 @@
 				margin-bottom: 15px;
 			}
 
+			.player-stat-chart-container {
+				margin-bottom: 80px;
+			}
+
 			.bar-1 {
 				border-top-left-radius: 25px;
 				border-bottom-left-radius: 25px;
@@ -262,6 +247,29 @@
 				font-size: 1rem !important;
 				font-family: 'Josefin Sans', sans-serif;;
 			}
+
+			@media screen and (max-width:1100px) {
+
+				#body-content-wrapper {
+				  	border-bottom-left-radius: 100px;
+				    border-bottom-right-radius: 100px;
+				}
+			}
+
+			@media screen and (max-width:767px) {	
+				.player-profiles .display-4 {
+					margin-top: 0px !important;
+				}	
+
+				#coming-soon {
+					display: none;
+				}			
+
+				.loader {
+					top: 90%;
+					right: 45%;
+				}	
+			}
 			
 		</style>		
 	</head>
@@ -272,11 +280,11 @@
 				<h1 class='display-3'>Compario<span class='beta'> v1 Beta</span></h1>
 				<p>Compare cricket player stats head-to-head</p>
 
-				<div class="container mb-4 search-form">
+				<div class="container px-4  mb-4 search-form">
 					<div class='row'>
-							<div class='col-md-5'><i class="fas fa-user-circle"></i><input type='text' class="form-control text-sm-left text-md-right" name='player_1' value='' placeholder='Search Player 1 Name (Ex: Dhoni)'/></div>
+							<div class='col-md-5'><i class="fas fa-user-circle"></i><input type='text' class="form-control text-center text-md-right" name='player_1' value='' placeholder='Search Player 1 Name (Ex: Dhoni)'/></div>
 							<div class='col-md-2'><span class='vs-text'>vs</span></div>
-							<div class='col-md-5'><i class="fas fa-user-circle"></i><input type='text' class="form-control" name='player_2' value='' placeholder='Search Player 2 Name (Ex: Gilchrist)'/></div>
+							<div class='col-md-5'><i class="fas fa-user-circle"></i><input type='text' class="form-control text-center text-md-left" name='player_2' value='' placeholder='Search Player 2 Name (Ex: Gilchrist)'/></div>
 							<div class='offset-md-4 col-md-4'><button class="btn btn-success" onclick="getPlayers(event)">Search</button></div>													
 					</div>					
 				</div>

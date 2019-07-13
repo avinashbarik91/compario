@@ -7,7 +7,8 @@ $bowl_stat_category = array("Matches", "Innings", "Balls Bowled", "Runs Conceded
 function read_player_list($search_str)
 {	
 	$search_str 	= trim(htmlspecialchars($search_str));
-	$scraper_api 	= "http://api.scraperapi.com?api_key=e77ad5342cca94d32c633c4c836e7813&url=";
+	$scraper_api 	= "";
+	/*$scraper_api 	= "http://api.scraperapi.com?api_key=e77ad5342cca94d32c633c4c836e7813&url=";*/
 	$data 			= file_get_contents($scraper_api . "http://search.espncricinfo.com/ci/content/player/search.html?search=" . urlencode($search_str) . "&x=38&y=11");		
 	$summaries  	= explode('<p class="ColumnistSmry">', $data);
 	$count 			= 0;
@@ -48,7 +49,7 @@ function render_player_list($player_1, $player_2)
 	
 	$html = "
 
-	<div class='container select-compare-options'>
+	<div class='container px-4 select-compare-options'>
 					<legend>Select Comparison Options</legend>
 					<div class='row'>						
 	";	
