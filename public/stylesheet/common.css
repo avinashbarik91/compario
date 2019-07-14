@@ -1,0 +1,280 @@
+body {	
+	background-image: radial-gradient(circle, #1d215a, #171b4e, #040b27);
+	color: #EDF5E1 !important;
+	text-align: center;
+	margin: 0px;
+	font-family: 'Josefin Sans', sans-serif;
+	min-height: 100%;
+	position: relative;
+}
+
+input[type="text"], select option, .form-control {
+ 	background-color : #EDF5E1 !important; 
+ 	color: #05386b !important;
+}
+
+#player-comparison-wrapper {
+	width: auto !important;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    display: table;
+    margin-top: 30px;			    		    
+}
+
+.charts {
+    width: 350px;	
+    height: 220px;   
+    border: 1px solid white;
+    margin: 10px;
+    padding: 10px;
+    display: inline-block;
+    text-align: left;
+    box-shadow: 4px 5px 5px 1px #00000040;
+}
+
+.player-bat-stats {
+	display: inline-block;
+}
+
+#body-content-wrapper {	
+	background-image: linear-gradient(to right, #5cdb95 , #05386b);
+	min-height: 650px;
+    background-size: cover;
+    border-bottom-left-radius: 500px;
+    border-bottom-right-radius: 500px;   
+    box-shadow: 5px 6px 10px 2px #050b28;
+}
+
+#header-wrapper {
+	padding-top: 30px;				
+}
+
+h1 {
+	font-family: 'Righteous', sans-serif;				
+	font-size: 3em;    			
+}
+
+.chart-heading {
+	text-align: center;
+}
+
+.fas {
+	font-size: 2em;
+	margin-bottom: 5px;
+}
+
+.form-control {
+	margin: 5px 0px;
+}
+
+.select-compare-options {
+	background: rgba(5, 57, 107, 0.4);
+	padding: 30px;
+	border-radius: 20px;
+}
+
+.loader {
+	background-image: url(../static/flat-bouncing-circle-loading-icon.svg);
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+    position: absolute;
+    top: 71%;
+    right: 49%;
+    display: none;
+}
+
+.player-profiles {
+	font-size: 1.4em;
+}	
+
+.player-profiles img{
+	margin: 10px 0px;
+	box-shadow: 4px 5px 5px 1px #00000040;
+	display: none;
+}
+
+.footer {
+	position: absolute;
+	bottom:0;
+	width: 100%;
+	background-color: #05386b;
+	bottom: -70px;
+}
+
+#coming-soon {
+	position: absolute;
+	bottom:0;
+	width: 100%;
+	bottom: -28px;
+}
+
+.footer a {
+	padding-top: 10px;
+	color: #EDF5E1 !important;
+}
+
+.footer p {
+	margin-top: 15px;
+}
+
+#compare-form button {
+	background-color: #e41c4e;
+	border: #f11f53;
+}
+
+label {
+	font-size: 1.2em;
+}
+
+.stat-play-num {
+	font-size: 1rem;
+}
+
+.player-stat-chart-container .row {
+	margin-bottom: 15px;
+}
+
+.player-stat-chart-container {
+	margin-bottom: 80px;
+	position: relative;
+}
+
+.bar-1 {
+	border-top-left-radius: 25px;
+	border-bottom-left-radius: 25px;
+	height: 30px;
+	background-color:#5cdb95; 				
+}
+
+.bar-2 {
+	border-top-right-radius: 25px;
+	border-bottom-right-radius: 25px;
+	height: 30px;
+	background-color:#05386b; 
+}
+
+.bar-1, .bar-2 {
+	transition: width 0.5s;
+}
+
+.player-bat-stats.diff span {
+	width: 45px;
+    height: 12px;
+    display: inline-block;			    
+    margin: 4px;
+    background-color: #5cdb95;
+}
+
+.player-bat-stats.diff .sp-second {
+	background-color: #05386b !important;
+}
+
+.vs-text {
+	font-size: 5.5rem;
+	font-family: 'Righteous', sans-serif;
+}
+
+.btn {
+	width: 150px;
+}
+
+.fas {
+	font-size: 3em;
+} 
+
+legend {
+	font-family: 'Righteous', sans-serif;
+}
+
+.player-name-post {
+	font-family: 'Righteous', sans-serif;
+	font-size: 2rem;
+}
+
+.player-profiles .display-4 {
+	font-family: 'Righteous', sans-serif;
+	margin-top: 38%;
+	font-size: 5rem;
+}
+
+.beta {
+	font-size: 1rem !important;
+	font-family: 'Josefin Sans', sans-serif;;
+}
+
+.divider {
+	position: absolute;
+	height: 103%;
+	width: 1px;
+	left: 50%;
+	/* z-index: 99999999; */
+	border-left: 2px dashed #353b84;
+	top: -20px;
+}
+
+.divider:before {
+	content: 'Center';
+	position: relative;
+	top: -20px;
+	left: -26px;
+	color: #353b84;
+}
+
+.divider:after {
+	position: absolute;
+	content: ' ';
+	bottom: 0;
+	display: inline-block;
+	height: 10px;
+	width: 10px;
+	background: #353b84;
+	border-radius: 5px;
+	left: -6px;
+}
+
+#p1-img {
+	border-bottom: 15px solid #5cdb95;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#p2-img {
+	border-bottom: 15px solid #05386b;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+@media screen and (max-width:1100px) {
+
+	#body-content-wrapper {
+	  	border-bottom-left-radius: 100px;
+	    border-bottom-right-radius: 100px;
+	}
+}
+
+@media screen and (max-width:767px) {	
+	.player-profiles .display-4 {
+		margin-top: 0px !important;
+	}	
+
+	#coming-soon {
+		display: none;
+	}			
+
+	.loader {
+		top: 90%;
+		right: 45%;
+	}
+
+	.player-stat-chart-container {
+		margin-top: 30px;
+	}	
+
+	.search-form .btn {
+		margin-top: 10px;
+	}
+}
+
+	
