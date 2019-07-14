@@ -320,7 +320,7 @@
 		
 		<div id="body-content-wrapper">
 			<div id="header-wrapper">
-				<h1 class='display-3'>Compario<span class='beta'> v1 Beta</span></h1>
+				<h1 class='display-3 px-4'>Compario<span class='beta'> v1 Beta</span></h1>
 				<p>Compare cricket player stats head-to-head</p>
 
 				<div class="container px-4  mb-4 search-form">
@@ -342,8 +342,8 @@
 		<div class='loader'></div>
 		<div id='player-comparison-wrapper'>
 			<!-- Player Comparison -->
-			<i class='fas fa-poll'></i><h3>Head-to-Head Batting, Bowling and Fielding Career Comparison</h3>
-			<p>Simple to read statistics with the latest results and scores for cricket players. Search and select players, stat type and match type to get started.</p>
+			<i class='fas fa-poll'></i><h3 class='px-4 mb-3'>Head-to-Head Batting, Bowling and Fielding Career Comparison</h3>
+			<p class='px-4'>Simple to read statistics with the latest results and scores for cricket players. Search and select players, stat type and match type to get started.</p>
 		</div>
 		<div id='coming-soon'>
 			<p>Compario is in beta. Website is best viewed on larger screens such as laptops. More in-depth comparisons, date based filters and player profiles is coming soon.</p>
