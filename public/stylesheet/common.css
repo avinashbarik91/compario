@@ -87,7 +87,7 @@ h1 {
 
 .player-profiles {
 	font-size: 1.4em;
-}	
+}
 
 .player-profiles img{
 	margin: 10px 0px;
@@ -122,6 +122,10 @@ h1 {
 #compare-form button {
 	background-color: #e41c4e;
 	border: #f11f53;
+}
+
+.player-profiles img {
+	border: 1px solid white;
 }
 
 label {
@@ -234,18 +238,6 @@ legend {
 	left: -6px;
 }
 
-#p1-img {
-	border-bottom: 15px solid #5cdb95;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-}
-
-#p2-img {
-	border-bottom: 15px solid #05386b;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-}
-
 @media screen and (max-width:1100px) {
 
 	#body-content-wrapper {
@@ -274,6 +266,22 @@ legend {
 
 	.search-form .btn {
 		margin-top: 10px;
+	}
+
+	.player-profiles img{
+		border: none;
+	}
+
+	#p1-img {
+		border-bottom: 15px solid #5cdb95;
+	    border-bottom-left-radius: 5px;
+	    border-bottom-right-radius: 5px;
+	}
+
+	#p2-img {
+		border-bottom: 15px solid #05386b;
+	    border-bottom-left-radius: 5px;
+	    border-bottom-right-radius: 5px;
 	}
 }
 
