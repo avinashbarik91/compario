@@ -116,11 +116,18 @@ function render_player_list($player_1, $player_2)
 
 		$html .= "</div>";
 	}
-	else
+	else if (empty($player_1_list))
 	{
 		$html .= "<div class='col-md-12'>";	
 		$html .=  "<label>Oops!.</label>";
-		$html .=  "<p>Could not find any matching players for for your search. If unsure, try entering Last Name or First Name only</p>";		
+		$html .=  "<p class='px-4'>Could not find any matching players for <u>" . $player_1 . "</u>. Try searching <u>Last Name</u> or <u>First Name</u> only</p>";		
+		$html .=  "</div>";
+	}
+	else if (empty($player_2_list))
+	{
+		$html .= "<div class='col-md-12'>";	
+		$html .=  "<label>Oops!.</label>";
+		$html .=  "<p class='px-4'>Could not find any matching players for <u>" . $player_2 . "</u>. Try searching <u>Last Name</u> or <u>First Name</u> only</p>";		
 		$html .=  "</div>";
 	}
 
