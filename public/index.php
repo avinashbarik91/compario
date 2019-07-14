@@ -187,6 +187,7 @@
 
 			.player-stat-chart-container {
 				margin-bottom: 80px;
+				position: relative;
 			}
 
 			.bar-1 {
@@ -248,6 +249,36 @@
 				font-family: 'Josefin Sans', sans-serif;;
 			}
 
+			.divider {
+				position: absolute;
+	    		height: 103%;
+	    		width: 1px;
+	    		left: 50%;
+	    		/* z-index: 99999999; */
+	    		border-left: 2px dashed #353b84;
+	    		top: -20px;
+			}
+
+			.divider:before {
+				content: 'Center';
+		    	position: relative;
+		    	top: -20px;
+		    	left: -26px;
+		    	color: #353b84;
+			}
+
+			.divider:after {
+				position: absolute;
+    			content: ' ';
+    			bottom: 0;
+    			display: inline-block;
+    			height: 10px;
+    			width: 10px;
+    			background: #353b84;
+    			border-radius: 5px;
+    			left: -6px;
+			}
+
 			@media screen and (max-width:1100px) {
 
 				#body-content-wrapper {
@@ -268,7 +299,15 @@
 				.loader {
 					top: 90%;
 					right: 45%;
+				}
+
+				.player-stat-chart-container {
+					margin-top: 30px;
 				}	
+
+				.search-form .btn {
+					margin-top: 10px;
+				}
 			}
 			
 		</style>		
