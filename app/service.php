@@ -226,8 +226,8 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 					<h5 class='chart-heading'>".$stats_keys[$i]."</h5>		
 
 					<span class='stat-play-num'>" . $player_1_stats_val[$i] . "</span>
-					<span class='bar-1' style='width: ".$player_1_bar_width."px; display:inline-block;'></span>
-					<span class='bar-2' style='width: ".$player_2_bar_width."px; display:inline-block;'></span>
+					<span class='bar-1 bars' final-width='".$player_1_bar_width."'; style='width: 5px; display:inline-block;'></span>
+					<span class='bar-2 bars' final-width='".$player_2_bar_width."'; style='width: 5px; display:inline-block;'></span>
 					<span class='stat-play-num'>" . $player_2_stats_val[$i] . "</span>
 
 				  </div>";

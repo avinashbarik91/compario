@@ -204,6 +204,10 @@
 				background-color:#05386b; 
 			}
 
+			.bar-1, .bar-2 {
+				transition: width 0.5s;
+			}
+
 			.player-bat-stats.diff span {
 				width: 45px;
 			    height: 12px;

@@ -74,7 +74,13 @@ function comparePlayers(e)
                 }, 500);
                     
                 setTimeout(function(){
-                    $(".player-profiles img").slideDown(500);
+                    $(".player-profiles img").slideDown(300);
+                    setTimeout(function(){
+                        $(".bars").each(function(){
+                            var width = $(this).attr('final-width');
+                            $(this).css('width', width + "px");    
+                        });
+                    }, 400); 
                 }, 500);                
             }
             else
