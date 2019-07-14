@@ -204,8 +204,8 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 
 	for ($i = 0; $i < sizeof($stats_keys); $i++)
 	{
-		$player_1_stats_val[$i] = $player_1_stats_val[$i] == "" ? 0 : $player_1_stats_val[$i];
-		$player_2_stats_val[$i] = $player_2_stats_val[$i] == "" ? 0 : $player_2_stats_val[$i];
+		$player_1_stats_val[$i] = $player_1_stats_val[$i] == "" ? "-" : $player_1_stats_val[$i];
+		$player_2_stats_val[$i] = $player_2_stats_val[$i] == "" ? "-" : $player_2_stats_val[$i];
 
 		$html .= "<div class='row'>";
 
