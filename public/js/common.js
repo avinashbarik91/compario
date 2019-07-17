@@ -4,10 +4,10 @@ function getPlayers(e)
     e.preventDefault();
     var player1 = $("input[name=player_1]").val();
     var player2 = $("input[name=player_2]").val();    
-    $("#content").html("<p>Loading Player List and Options...</p>");
+    $(".loader-first-text").css('visibility', 'visible');
     $("#player-comparison-wrapper").hide();
     $.ajax({
-        url: "ajax_handler.php",
+        url: "compare.php",
         dataType: "json",
         type: "POST",
         data: {
@@ -18,6 +18,7 @@ function getPlayers(e)
         success: function(data){
             if (data.output != null)
             {
+                $(".loader-first-text").css('visibility', 'hidden');
                 $("#content").hide();
                 $("#content").html(data.output).fadeIn(500);
             }
@@ -48,10 +49,10 @@ function comparePlayers(e)
 
     $(".loader").show();
     $("#player-comparison-wrapper").show();
-    $("#player-comparison-wrapper").html("<p><br/><br/>Crunching Data...</p>");
+    $("#player-comparison-wrapper").html("<p class='loader-text'>Crunching Data...</p>");
 
     $.ajax({
-        url: "ajax_handler.php",
+        url: "compare.php",
         dataType: "json",
         type: "POST",
         data: {

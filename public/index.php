@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 	<head>
 		<title>Compario | Simple head-to-head comparison for cricket players</title>
 		<meta charset="UTF-8">
@@ -19,10 +20,7 @@
 		<script src="js/jquery.min.js"></script>
 		<script src="js/common.js"></script>
 		<script src="js/popper.js"></script>		
-		<script src="js/bootstrap.min.js"></script>
-		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script> -->
-		<!-- Global site tag (gtag.js) - Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-143752108-1"></script>
+		<script src="js/bootstrap.min.js"></script>		
 		<script>
 		  window.dataLayer = window.dataLayer || [];
 		  function gtag(){dataLayer.push(arguments);}
@@ -32,8 +30,11 @@
 		</script>		
 	</head>
 	<body>
-		
+
 		<div id="body-content-wrapper">
+
+			<?php include('header.inc'); ?>
+
 			<div id="header-wrapper">
 				<h1 class='display-3 px-4'>Compario<span class='beta'> v1 Beta</span></h1>
 				<p>Compare cricket player stats head-to-head</p>
@@ -48,25 +49,27 @@
 				</div>
 			</div>
 
-
+			<p class='loader-first-text'>Loading Player List and Options...</p>
 			<div id='content'>
+				
 				<!-- Player Selection -->
 			</div>
 
+			<div class='loader'></div>
+
 		</div>
-		<div class='loader'></div>
+		
 		<div id='player-comparison-wrapper'>
 			<!-- Player Comparison -->
 			<i class='fas fa-poll'></i><h3 class='px-4 mb-3'>Head-to-Head Batting, Bowling and Fielding Career Comparison</h3>
 			<p class='px-4'>Simple to read statistics with the latest results and scores for cricket players. Search and select players, stat type and match type to get started.</p>
 		</div>
+		
 		<div id='coming-soon'>
 			<p>Compario is in beta. Website is best viewed on larger screens such as laptops. More in-depth comparisons, date based filters and player profiles is coming soon.</p>
 		</div>		
                             
-		<div class="footer" style="height: 50px;">
-			<p class="footer-text text-center mb-0 text-light"><a target="_blank" href="https://github.com/avinashbarik91/compario">&#9400; Compario <?php echo date('Y');?> By Avinash Barik  </a></p>
-		</div>
-		<script id="dsq-count-scr" src="//compario.disqus.com/count.js" async></script>
+		<?php include('footer.inc'); ?>	
+		
 	</body>
 </html>

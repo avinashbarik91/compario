@@ -7,8 +7,7 @@ $bowl_stat_category = array("Matches", "Innings", "Balls Bowled", "Runs Conceded
 function read_player_list($search_str)
 {	
 	$search_str 	= trim(htmlspecialchars($search_str));
-	$scraper_api 	= "";
-	/*$scraper_api 	= "http://api.scraperapi.com?api_key=e77ad5342cca94d32c633c4c836e7813&url=";*/
+	$scraper_api 	= "";	
 	$data 			= file_get_contents($scraper_api . "http://search.espncricinfo.com/ci/content/player/search.html?search=" . urlencode($search_str) . "&x=38&y=11");		
 	$summaries  	= explode('<p class="ColumnistSmry">', $data);
 	$count 			= 0;
@@ -198,7 +197,20 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 
 	$html .= "</div></div>";	
 	
-	$html .= "<div class='container player-stat-chart-container'>";
+	$html .= "<div class='container player-stat-chart-container'>";	
+
+	if (sizeof($player_1_stats_val) != sizeof($player_2_stats_val))
+	{
+		$html .= "<div class='row'>";
+		$html .= "<div class='col-md-12 mt-5'>
+					<h5 class='chart-heading'><i class='comp-error fas fa-info-circle'></i>Oops! Some of the relevant data needed for head to head comparison could not be found. Retry with other players.</h5>";
+		$htnl .= "</div>";
+		$html .= "</div>";	
+
+		$html .= "</div>";
+
+		return $html;		
+	}
 
 	$html .= "<div class='divider'></div>";
 
@@ -248,155 +260,8 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 	return $html;
 }
 
-/*function render_players_comparison($player_1_link, $player_1_name, $player_2_link, $player_2_name, $match_type, $stat_type)
-{
-	$player_stats = read_player_comparison($player_1_link, $player_2_link, $stat_type);
-	
-	if ($stat_type == "bat")
-	{
-		$stats_keys = $GLOBALS['bat_stat_category'];
-		$stat_full_name = "Batting and Fielding";	
-	}
-	else if ($stat_type == "bowl")
-	{
-		$stats_keys = $GLOBALS['bowl_stat_category'];
-		$stat_full_name = "Bowling";	
-	}	
-
-	$player_1_stats_val  = array_values($player_stats['player_1_stats'][$stat_type][$match_type]);
-	$player_2_stats_val  = array_values($player_stats['player_2_stats'][$stat_type][$match_type]);
-
-	$player_1_clean_name = explode("(", $player_1_name)[0];
-	$player_2_clean_name = explode("(", $player_2_name)[0];
-
-	$player_1_image = $player_stats['player_1_stats']['image'];
-	$player_2_image = $player_stats['player_2_stats']['image'];
-
-	$html = "<i class='fas fa-poll'></i><h3>Head-to-Head " . $match_type . " " . $stat_full_name . " Career Comparison</h3>";
-	$html .= "<div class='container player-profiles'>";
-	$html .= "<div class='row'>";
-
-	$html .= "<div class='offset-md-3 col-md-2'>";
-	$html .= "<img id='p1-img' src='".$player_1_image."'/><p class='player-name-post'>".$player_1_clean_name."</p>";
-	$html .= "</div>";
-
-	$html .= "<div class='col-md-2'>";
-	$html .= "<p class='display-4'> vs </p>";
-	$html .= "</div>";
-
-	$html .= "<div class='col-md-2'>";
-	$html .= "<img id='p2-img' src='".$player_2_image."'/><p class='player-name-post'>".$player_2_clean_name."</p>";
-	$html .= "</div>";
-
-	$html .= "</div></div>";	
-	
-	for ($i = 0; $i < sizeof($stats_keys); $i++)
-	{
-		if ($stats_keys[$i] == "Best Bowling Innings" || 
-			$stats_keys[$i] == "Best Bowling Match" || 
-			$stats_keys[$i] == "Bowling Average" || 
-			$stats_keys[$i] == "Bowling Strike Rate" || 
-			($player_1_stats_val[$i] == "" && $player_2_stats_val[$i]))
-		{
-			$html_2 .= "<div class='charts'><h4 class='chart-heading'>".$stats_keys[$i]."</h4>
-						
-							<div class='player-bat-stats diff'>
-							<span class='sp-first'></span><p>".$player_1_clean_name . "-" . $player_1_stats_val[$i]."</p>
-							<span class='sp-second'></span><p>".$player_2_clean_name . "-" . $player_2_stats_val[$i]."</p>
-							</div>
-						
-						</div>";             
-			continue;
-		}
-
-		$html .= "<div class='charts'><h4 class='chart-heading'>".$stats_keys[$i]."</h4><canvas id='my-chart-".$i."'></canvas></div>                 
-		            <div class='player-bat-stats'>          
-		                <script>
-					            var ctx = document.getElementById('my-chart-".$i."').getContext('2d');      
-					            Chart.defaults.global.defaultFontColor = 'white';       
-					            var chart = new Chart(ctx, {               
-					                
-					                type: 'horizontalBar',  
-					                responsive: true,
-	    							maintainAspectRatio: false,      
-					                data: {
-					                    labels: ['".$stats_keys[$i]."'],    
-					                    datasets: [
-					                    {
-					                        label: '".$player_1_clean_name."',
-	                                        pointStyle: 'line',      
-					                        backgroundColor: '#5cdb95',
-					                        <!--borderColor: 'darkgreen',	-->		                      
-		                					borderWidth: 1,
-					                        data: [".$player_1_stats_val[$i]."],                       
-					                    },
-					                    {
-					                        label: '".$player_2_clean_name."',
-	                                        pointStyle: 'line',      
-					                        backgroundColor: '#05386b',
-					                        <!--borderColor: 'darkgreen',	-->		                      
-		                					borderWidth: 1,
-					                        data: [".$player_2_stats_val[$i]."],                        
-					                    }
-					                    ]
-					                },
-
-					                //----Configuration options go here-----
-					                
-					                options: 
-					                {
-					                    legend: 
-					                    {
-					                        labels: 
-					                        {				                            
-					                            fontColor: 'white'
-					                        }
-					                    },
-
-					                    scales:
-					                    {
-					                        xAxes: [{                           
-					                            
-					                            scaleLabel: 
-					                            {
-					                                display: true,
-					                            } ,
-					                            ticks: 
-					                            {
-											        beginAtZero:true
-											    }  
-					                        }],
-
-					                        yAxes: [{                           
-					                            
-					                            scaleLabel: 
-					                            {
-					                                display: true,
-					                            }, 
-					                            ticks: 
-					                            {
-											        beginAtZero:true
-											    } 
-					                        }]
-
-					                    }			                    
-					                }
-					            });
-					    </script>        
-		            </div>";
-	}
-
-	if ($html_2 != "")
-	{
-		return $html . $html_2;
-	}
-
-	return $html;
-}*/
-
 function read_batting_and_fielding_stats($player_link, &$player_image)
 {
-	//$scraper_api 		= "http://api.scraperapi.com?api_key=e77ad5342cca94d32c633c4c836e7813&url=";
 	$scraper_api 		= "";
 	$data 				= file_get_contents($scraper_api . "http://www.espncricinfo.com" . $player_link);
 	$player_image 		= read_player_profile($data)['image'];	
@@ -448,7 +313,6 @@ function read_player_profile($data)
 
 function read_bowling_stats($player_link, &$player_image)
 {
-	//$scraper_api 		= "http://api.scraperapi.com?api_key=e77ad5342cca94d32c633c4c836e7813&url=";
 	$scraper_api 		= "";
 	$data 				= file_get_contents($scraper_api . "http://www.espncricinfo.com" . $player_link);
 	$player_image 		= read_player_profile($data)['image'];	
