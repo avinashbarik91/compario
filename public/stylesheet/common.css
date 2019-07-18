@@ -40,16 +40,6 @@ input[type="text"], select option, .form-control {
 	padding: 20px 0px 20px 0px;
 }
 
-.charts {
-    width: 350px;	
-    height: 220px;   
-    border: 1px solid white;
-    margin: 10px;
-    padding: 10px;
-    display: inline-block;
-    text-align: left;
-    box-shadow: 4px 5px 5px 1px #00000040;
-}
 
 .player-bat-stats {
 	display: inline-block;
@@ -61,7 +51,7 @@ input[type="text"], select option, .form-control {
     background-size: cover;
     border-bottom-left-radius: 500px;
     border-bottom-right-radius: 500px;   
-    box-shadow: 5px 6px 10px 2px #050b28;
+   /* box-shadow: 5px 6px 10px 2px #050b28;*/
     position: relative;
 }
 

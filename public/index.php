@@ -5,15 +5,13 @@ $request = $_SERVER['REQUEST_URI'];
 
 if (file_exists(__DIR__ . $_SERVER["REQUEST_URI"] . ".php"))
 {
-	include_once(__DIR__ . $_SERVER["REQUEST_URI"] . ".php");
+	require(__DIR__ . $_SERVER["REQUEST_URI"] . ".php");
 	exit();
 }
 else if ($request != "/" && $request != "")
-{
-	//TODO : Add 404
-	//include_once(__DIR__ . 'index.php');
+{	
+	include "page_not_found.php";
 	exit();
-
 }
     
 ?>
@@ -86,14 +84,14 @@ else if ($request != "/" && $request != "")
 				<div class='features col-md-6'>
 					<div class='feature-text p-5 m-5'>
 						<i class="fas fa-balance-scale"></i></i><h3 class='px-4 mb-3'>Head-to-Head Player Comparison</h3>
-						<p class='px-4'>Simple to read statistics with the latest results and scores for cricket players. Search and select players, stat type and match type to get started.</p>
+						<p class='px-4'>Unique comparison for players based on more than 15 metrics such as Batting Average, Best Bowling Figures, Strike Rate etc.</p>
 					</div>
 				</div>
 
 				<div class='features col-md-6'>
 					<div class='feature-text p-5 m-5'>						
 						<i class='fas fa-poll'></i><h3 class='px-4 mb-3'>Easy To Read Player Statistics</h3>
-						<p class='px-4'>Simple to read statistics with the latest results and scores for cricket players. Search and select players, stat type and match type to get started.</p>
+						<p class='px-4'>Player comparison is presented in easy to read side by side format with a central line indicator that helps you understand the better stat at a glance.</p>
 					</div>
 				</div>
 
@@ -104,14 +102,14 @@ else if ($request != "/" && $request != "")
 				<div class='features col-md-6'>
 					<div class='feature-text p-5 m-5'>
 						<i class="fas fa-calendar-alt"></i><h3 class='px-4 mb-3'>Match & Statistic Categories</h3>
-						<p class='px-4'>Simple to read statistics with the latest results and scores for cricket players. Search and select players, stat type and match type to get started.</p>
+						<p class='px-4'>Select from ODIs, Test Matches, T20Is, ListA and more. See performace stats based on Batting & Fielding or Bowling stat type.</p>
 					</div>
 				</div>
 
 				<div class='features col-md-6'>
 					<div class='feature-text p-5 m-5'>
 						<i class="fas fa-address-card"></i><h3 class='px-4 mb-3'>Player Profiles & Date Filters</h3>
-						<p class='px-4'>Simple to read statistics with the latest results and scores for cricket players. Search and select players, stat type and match type to get started.</p>
+						<p class='px-4'>Your feedback is very important to us and we value it immensely. Player Profiles and Date filters will be added soon to present more in-depth analysis.</p>
 					</div>
 				</div>
 
