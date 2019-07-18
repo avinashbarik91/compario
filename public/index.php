@@ -36,7 +36,7 @@
 			<?php include('header.inc'); ?>
 
 			<div id="header-wrapper">
-				<h1 class='display-3 px-4'>Compario<span class='beta'> v1 Beta</span></h1>
+				<h1 class='display-3 px-4'>Compario<span class='beta'> v1</span></h1>
 				<p>Compare cricket player stats head-to-head</p>
 
 				<div class="container px-4  mb-4 search-form">
@@ -60,21 +60,55 @@
 		</div>
 
 		<div id='player-comp-intro' class='container'>
-			<div class='row mt-5'>
-				<div class='offset-md-2 col-md-8 px-4'>
-					<i class='fas fa-poll'></i><h3 class='px-4 mb-3'>Head-to-Head Batting, Bowling and Fielding Career Comparison</h3>
-					<p class='px-4'>Simple to read statistics with the latest results and scores for cricket players. Search and select players, stat type and match type to get started.</p>
+			<div class='row'>
+				
+				<div class='features col-md-6'>
+					<div class='feature-text p-5 m-5'>
+						<i class="fas fa-balance-scale"></i></i><h3 class='px-4 mb-3'>Head-to-Head Player Comparison</h3>
+						<p class='px-4'>Simple to read statistics with the latest results and scores for cricket players. Search and select players, stat type and match type to get started.</p>
+					</div>
 				</div>
+
+				<div class='features col-md-6'>
+					<div class='feature-text p-5 m-5'>						
+						<i class='fas fa-poll'></i><h3 class='px-4 mb-3'>Easy To Read Player Statistics</h3>
+						<p class='px-4'>Simple to read statistics with the latest results and scores for cricket players. Search and select players, stat type and match type to get started.</p>
+					</div>
+				</div>
+
 			</div>
+
+			<div class='row'>
+				
+				<div class='features col-md-6'>
+					<div class='feature-text p-5 m-5'>
+						<i class="fas fa-calendar-alt"></i><h3 class='px-4 mb-3'>Match & Statistic Categories</h3>
+						<p class='px-4'>Simple to read statistics with the latest results and scores for cricket players. Search and select players, stat type and match type to get started.</p>
+					</div>
+				</div>
+
+				<div class='features col-md-6'>
+					<div class='feature-text p-5 m-5'>
+						<i class="fas fa-address-card"></i><h3 class='px-4 mb-3'>Player Profiles & Date Filters</h3>
+						<p class='px-4'>Simple to read statistics with the latest results and scores for cricket players. Search and select players, stat type and match type to get started.</p>
+					</div>
+				</div>
+
+			</div>
+
 		</div>
 		
 		<div id='player-comparison-wrapper'>
 			<!-- Player Comparison -->
 			
 		</div>
+
+		<div>
+			<div class='col-md-12'><button id='compare-new-btn' class='btn btn-success'>Start New Comparison</button></div>
+		</div>
 		
-		<div id='coming-soon'>
-			<p>Compario is in beta. Website is best viewed on larger screens such as laptops. More in-depth comparisons, date based filters and player profiles is coming soon.</p>
+		<div id='coming-soon' class='px-2'>
+			<p>Compario is best viewed on larger screens such as laptops. More in-depth comparisons, date based filters and player profiles is coming soon.</p>
 		</div>		
                             
 		<?php include('footer.inc'); ?>	

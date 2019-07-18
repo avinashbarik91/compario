@@ -255,7 +255,6 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 	}
 
 	$html .= "</div>";
-
 	
 	return $html;
 }

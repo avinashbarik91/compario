@@ -23,7 +23,21 @@ input[type="text"], select option, .form-control {
 }
 
 #player-comp-intro {
-	padding-bottom: 100px;
+	margin-top: 50px;
+	padding-bottom: 20px;
+}
+
+#player-comp-intro .feature-text {
+	background-color: #05386b;
+    border-radius: 20px;	
+}
+
+#player-comp-intro .fas {
+	padding: 15px;
+}
+
+#player-comp-intro .container {
+	padding: 20px 0px 20px 0px;
 }
 
 .charts {
@@ -116,7 +130,7 @@ h1 {
 
 .footer {
 	position: absolute;
-	bottom:0;
+	bottom: -120px;
 	width: 100%;
 	background-color: #05386b;	
 }
@@ -124,7 +138,7 @@ h1 {
 #coming-soon {
 	position: absolute;	
 	width: 100%;
-	bottom: 40px;
+	bottom: -80px;
 }
 
 .footer a {
@@ -290,7 +304,7 @@ legend {
 	}	
 
 	#coming-soon {
-		display: none;
+		bottom: -130px;
 	}			
 
 	.player-stat-chart-container {
@@ -322,7 +336,7 @@ legend {
 	}
 
 	.footer {		
-		bottom: -40px;		
+		bottom: -170px;		
 	}
 
 }

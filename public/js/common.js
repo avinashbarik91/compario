@@ -5,8 +5,9 @@ function getPlayers(e)
     var player1 = $("input[name=player_1]").val();
     var player2 = $("input[name=player_2]").val();    
     $(".loader-first-text").css('visibility', 'visible');
-    $("#player-comparison-wrapper").hide();
-    $("#player-comp-intro").show();
+    $("#player-comparison-wrapper").fadeOut(500);
+    $("#player-comp-intro").fadeIn(500);
+    $("#compare-new-btn").slideDown(200);
     $.ajax({
         url: "compare.php",
         dataType: "json",
@@ -21,7 +22,7 @@ function getPlayers(e)
             {
                 $(".loader-first-text").css('visibility', 'hidden');
                 $("#content").hide();
-                $("#content").html(data.output).fadeIn(500);
+                $("#content").html(data.output).slideDown(500);
             }
             else
             {
@@ -47,11 +48,12 @@ function comparePlayers(e)
     var statType  = $("#stat-type-selected option:selected").val();
     
     var contentWidth = $("#content").width();
-
-    $(".loader").show();
-    $("#player-comp-intro").hide();
+    
+    $("#player-comp-intro").slideUp(200);
+    $(".loader").fadeIn(500);
     $("#player-comparison-wrapper").show();
     $("#player-comparison-wrapper").html("<p class='loader-text'>Crunching Data...</p>");
+    $("#compare-new-btn").slideUp(200);
 
     $.ajax({
         url: "compare.php",
@@ -77,14 +79,16 @@ function comparePlayers(e)
                 }, 500);
                     
                 setTimeout(function(){
-                    $(".player-profiles img").slideDown(300);
+                    $(".player-profiles img").slideDown(100);
                     setTimeout(function(){
                         $(".bars").each(function(){
                             var width = $(this).attr('final-width');
                             $(this).css('width', width + "px");    
                         });
                     }, 400); 
-                }, 500);                
+                }, 500); 
+
+                $("#compare-new-btn").slideDown(200);
             }
             else
             {
@@ -96,3 +100,14 @@ function comparePlayers(e)
         }
     });
 }
+
+$(document).ready(function(){    
+    $("#compare-new-btn").on('click', function(){
+        $('html, body').animate({
+            scrollTop: $("#body-content-wrapper").offset().top
+        }, 500);
+    });
+});
+
+
+
