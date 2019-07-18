@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Home | Compario - Simple head-to-head comparison for cricket players</title>
+		<title>About | Compario - Simple head-to-head comparison for cricket players</title>
 		<meta charset="UTF-8">
 		<meta http-equip="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="description" content="Simple head-to-head comparison for cricket players">
 		<meta http-equiv="x-ua-compatible" content="ie-edge">
 		<meta property='og:title' content='Compario'/>		
-		<meta property='og:description' content='Home | Compario - Simple head-to-head comparison for cricket players'/>
+		<meta property='og:description' content='About | Compario - Simple head-to-head comparison for cricket players'/>
 		<meta property='og:url' content='https://compario.dev'/>
 		<meta property='og:type' content='Open Source'/>
 		<link rel="icon" type="image/png" sizes="96x96" href="/static/favicon-3-96x96.png">

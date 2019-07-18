@@ -4,7 +4,7 @@ body {
 	text-align: center;
 	margin: 0px;
 	font-family: 'Josefin Sans', sans-serif;
-	min-height: 100vh;
+	min-height: 88vh;
 	position: relative;		
 }
 
@@ -83,9 +83,13 @@ h1 {
 	margin-bottom: 5px;
 }
 
-.about-page-icon.fas.fa-info-circle {
+.about-page-icon.fas.fa-info-circle, .fas.fa-clipboard-list{
 	font-size: 1em;
     padding-right: 15px;
+}
+
+.current-release {
+	color: #5cdb95;
 }
 
 .form-control {
@@ -282,6 +286,10 @@ legend {
 
 .navbar a:hover {
 	color: #e8e8e8;
+}
+
+.change-info {
+	border-bottom: 1px solid #edf5e126;
 }
 
 @media screen and (max-width:1100px) {

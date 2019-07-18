@@ -11,9 +11,9 @@
 		<div class="collapse navbar-collapse" id="myTogglerNav">
 			<div class="navbar-nav ml-auto">
 				<a class="nav-item nav-link" href="/">Home</a>
-				<a class="nav-item nav-link" href="/about.php">About</a>
-				<!-- <a class="nav-item nav-link" href="#blog">Changelog</a>	
-				<a class="nav-item nav-link" href="#blog">Privacy</a> -->									
+				<a class="nav-item nav-link" href="/about">About</a>
+				<a class="nav-item nav-link" href="/changelog">Changelog</a>	
+				<!-- <a class="nav-item nav-link" href="#blog">Privacy</a> -->									
 			</div>
 		</div>
 	</div>

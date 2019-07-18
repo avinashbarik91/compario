@@ -1,3 +1,23 @@
+<?php 
+
+
+$request = $_SERVER['REQUEST_URI'];
+
+if (file_exists(__DIR__ . $_SERVER["REQUEST_URI"] . ".php"))
+{
+	include_once(__DIR__ . $_SERVER["REQUEST_URI"] . ".php");
+	exit();
+}
+else if ($request != "/" && $request != "")
+{
+	//TODO : Add 404
+	//include_once(__DIR__ . 'index.php');
+	exit();
+
+}
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -36,7 +56,7 @@
 			<?php include('header.inc'); ?>
 
 			<div id="header-wrapper">
-				<h1 class='display-3 px-4'>Compario<span class='beta'> v1</span></h1>
+				<h1 class='display-3 px-4'>Compario<span class='beta'> v1.2</span></h1>
 				<p>Compare cricket player stats head-to-head</p>
 
 				<div class="container px-4  mb-4 search-form">
