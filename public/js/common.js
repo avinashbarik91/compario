@@ -62,8 +62,14 @@ function comparePlayers(e)
     
     var contentWidth = $("#content").width();
     
-    $("#player-comp-intro").slideUp(200);
+    $("#player-comp-intro").fadeOut(200);
     $(".loader").fadeIn(500);
+
+     $('html, body').animate({
+        scrollTop: $(".loader").offset().top
+    }, 500);
+
+     
     $("#player-comparison-wrapper").show();
     $("#player-comparison-wrapper").html("<p class='loader-text'>Crunching Data...</p>");
     $("#compare-new-btn").slideUp(200);
@@ -124,6 +130,7 @@ $(document).ready(function(){
     $("#player-comp-intro").fadeIn(500);
     $("#compare-new-btn").slideDown(200);
     $("#content").slideUp(200);
+    $(".err-msg").slideUp(200);
     $("input[name=player_1]").val("");
     $("input[name=player_2]").val("");  
 
