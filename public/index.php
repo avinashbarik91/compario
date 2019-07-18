@@ -1,20 +1,3 @@
-<?php 
-
-
-$request = $_SERVER['REQUEST_URI'];
-
-if (file_exists(__DIR__ . $_SERVER["REQUEST_URI"] . ".php"))
-{
-	require(__DIR__ . $_SERVER["REQUEST_URI"] . ".php");
-	exit();
-}
-else if ($request != "/" && $request != "")
-{	
-	include "page_not_found.php";
-	exit();
-}
-    
-?>
 
 <!DOCTYPE html>
 <html lang="en">
