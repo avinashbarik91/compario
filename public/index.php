@@ -27,8 +27,8 @@ else if ($request != "/" && $request != "")
 		<meta http-equiv="x-ua-compatible" content="ie-edge">
 		<meta property='og:title' content='Compario'/>		
 		<meta property='og:description' content='Compario - Simple head-to-head comparison for cricket players'/>
-		<meta property='og:url' content='https://compario.dev'/>
-		<meta property='og:type' content='Open Source'/>
+		<meta property='og:url' content='https://compario.dev/'/>
+		<meta property='og:image' content='https://www.compario.dev/static/feat-img.png'/>
 		<link rel="icon" type="image/png" sizes="96x96" href="/static/favicon-3-96x96.png">
 		<link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Righteous&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
