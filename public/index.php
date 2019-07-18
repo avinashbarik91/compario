@@ -79,6 +79,14 @@ else if ($request != "/" && $request != "")
 		</div>
 
 		<div id='player-comp-intro' class='container'>
+
+			<div class='row'>
+				
+				<div class='col-md-12 px-5'>
+					<h2><u>Features</u></h2>
+				</div>
+			</div>
+
 			<div class='row'>
 				
 				<div class='features col-md-6'>
@@ -111,6 +119,14 @@ else if ($request != "/" && $request != "")
 						<i class="fas fa-address-card"></i><h3 class='px-4 mb-3'>Player Profiles & Date Filters</h3>
 						<p class='px-4'>Your feedback is very important to us and we value it immensely. Player Profiles and Date filters will be added soon to present more in-depth analysis.</p>
 					</div>
+				</div>
+
+			</div>
+
+			<div class='row'>				
+				<div class='col-md-12 px-5'>
+					<h2 class='mb-3'><u>Sneak Peek</u></h2>
+					<img class='feature-img' src='static/feat-img.png'/>
 				</div>
 
 			</div>

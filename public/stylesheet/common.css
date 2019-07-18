@@ -29,7 +29,27 @@ input[type="text"], select option, .form-control {
 
 #player-comp-intro .feature-text {
 	background-color: #05386b;
-    border-radius: 20px;	
+    border-radius: 20px;
+    opacity: 0.8;
+    transition: opacity 0.2s;	
+}
+
+#player-comp-intro .feature-text:hover {
+	opacity: 1;	
+	cursor: pointer;
+}
+
+
+#player-comp-intro .feature-img {
+	width: 100%;
+	border-radius: 20px;
+	opacity: 0.8;
+	transition: opacity 0.2s;
+}
+
+#player-comp-intro .feature-img:hover {
+	opacity: 1;
+	cursor: pointer;
 }
 
 #player-comp-intro .fas {
@@ -337,6 +357,15 @@ legend {
 
 	.footer {		
 		bottom: -170px;		
+	}
+
+	#player-comp-intro .feature-text {
+		opacity: 1;			
+	}
+
+
+	#player-comp-intro .feature-img {
+		opacity: 1;
 	}
 
 }
