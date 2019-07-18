@@ -2,8 +2,21 @@
 function getPlayers(e)
 {
     e.preventDefault();
-    var player1 = $("input[name=player_1]").val();
-    var player2 = $("input[name=player_2]").val();    
+    var player1 = $("input[name=player_1]").val().trim();
+    var player2 = $("input[name=player_2]").val().trim();  
+
+    $(".err-msg").slideUp(200);
+    $("#content").slideUp(200);
+
+    if (player1 == "" || player2 == "")
+    {
+        $(".err-msg").slideDown(200);
+        $("#content").slideUp(200);
+        $("#player-comparison-wrapper").fadeOut(500);
+        $("#player-comp-intro").fadeIn(500);
+        return false;
+    }
+
     $(".loader-first-text").css('visibility', 'visible');
     $("#player-comparison-wrapper").fadeOut(500);
     $("#player-comp-intro").fadeIn(500);
@@ -106,6 +119,14 @@ $(document).ready(function(){
         $('html, body').animate({
             scrollTop: $("#body-content-wrapper").offset().top
         }, 500);
+
+    $("#player-comparison-wrapper").fadeOut(500);
+    $("#player-comp-intro").fadeIn(500);
+    $("#compare-new-btn").slideDown(200);
+    $("#content").slideUp(200);
+    $("input[name=player_1]").val("");
+    $("input[name=player_2]").val("");  
+
     });
 });
 

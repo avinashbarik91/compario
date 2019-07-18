@@ -44,7 +44,8 @@
 							<div class='col-md-5'><i class="fas fa-user-circle"></i><input type='text' class="form-control text-center text-md-right" name='player_1' value='' placeholder='Search Player 1 Name (Ex: Dhoni)'/></div>
 							<div class='col-md-2'><span class='vs-text'>vs</span></div>
 							<div class='col-md-5'><i class="fas fa-user-circle"></i><input type='text' class="form-control text-center text-md-left" name='player_2' value='' placeholder='Search Player 2 Name (Ex: Gilchrist)'/></div>
-							<div class='offset-md-4 col-md-4'><button class="btn btn-success" onclick="getPlayers(event)">Search</button></div>													
+							<div class='offset-md-4 col-md-4'><button class="btn btn-success" onclick="getPlayers(event)">Search</button></div>		
+							<div class='err-msg offset-md-4 col-md-4'>Both player names are required!</div>													
 					</div>					
 				</div>
 			</div>

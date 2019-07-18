@@ -172,7 +172,7 @@ label {
 }
 
 .player-stat-chart-container {
-	margin-bottom: 150px;
+	margin-bottom: 130px;
 	position: relative;
 }
 
@@ -269,9 +269,11 @@ legend {
 	left: -6px;
 }
 
-/*.navbar {
-	background-color: rgba(6, 57, 107, 0.24) !important;
-}*/
+.err-msg {
+	display: none;
+	color: #af0a0a;
+    padding-top: 5px;
+}
 
 .navbar a {
     margin: 0px 10px 0px 10px;
