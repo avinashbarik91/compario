@@ -126,7 +126,7 @@ else if ($request != "/" && $request != "")
 			<div class='row'>				
 				<div class='col-md-12 px-5'>
 					<h2 class='mb-3'><u>Sneak Peek</u></h2>
-					<img class='feature-img' src='static/feat-img.PNG'/>
+					<img class='feature-img' src='static/feat-img.png'/>
 				</div>
 
 			</div>
