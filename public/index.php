@@ -58,11 +58,19 @@
 			<div class='loader'></div>
 
 		</div>
+
+		<div id='player-comp-intro' class='container'>
+			<div class='row mt-5'>
+				<div class='offset-md-2 col-md-8 px-4'>
+					<i class='fas fa-poll'></i><h3 class='px-4 mb-3'>Head-to-Head Batting, Bowling and Fielding Career Comparison</h3>
+					<p class='px-4'>Simple to read statistics with the latest results and scores for cricket players. Search and select players, stat type and match type to get started.</p>
+				</div>
+			</div>
+		</div>
 		
 		<div id='player-comparison-wrapper'>
 			<!-- Player Comparison -->
-			<i class='fas fa-poll'></i><h3 class='px-4 mb-3'>Head-to-Head Batting, Bowling and Fielding Career Comparison</h3>
-			<p class='px-4'>Simple to read statistics with the latest results and scores for cricket players. Search and select players, stat type and match type to get started.</p>
+			
 		</div>
 		
 		<div id='coming-soon'>

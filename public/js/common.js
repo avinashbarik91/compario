@@ -6,6 +6,7 @@ function getPlayers(e)
     var player2 = $("input[name=player_2]").val();    
     $(".loader-first-text").css('visibility', 'visible');
     $("#player-comparison-wrapper").hide();
+    $("#player-comp-intro").show();
     $.ajax({
         url: "compare.php",
         dataType: "json",
@@ -48,6 +49,7 @@ function comparePlayers(e)
     var contentWidth = $("#content").width();
 
     $(".loader").show();
+    $("#player-comp-intro").hide();
     $("#player-comparison-wrapper").show();
     $("#player-comparison-wrapper").html("<p class='loader-text'>Crunching Data...</p>");
 
