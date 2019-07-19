@@ -1,6 +1,32 @@
+<?php 
+
+
+$request = $_SERVER['REQUEST_URI'];
+
+if (file_exists(__DIR__ . $_SERVER["REQUEST_URI"] . ".php"))
+{
+    require(__DIR__ . $_SERVER["REQUEST_URI"] . ".php");
+    exit();
+}
+else if ($request != "/" && $request != "")
+{    
+    include "page_not_found.php";
+    exit();
+}
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-144172971-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-144172971-1');
+		</script>	
 		<title>Compario | Simple head-to-head comparison for cricket players</title>
 		<meta charset="UTF-8">
 		<meta http-equip="X-UA-Compatible" content="IE=edge">
@@ -20,14 +46,7 @@
 		<script src="js/jquery.min.js"></script>
 		<script src="js/common.js"></script>
 		<script src="js/popper.js"></script>		
-		<script src="js/bootstrap.min.js"></script>		
-		<script>
-		  window.dataLayer = window.dataLayer || [];
-		  function gtag(){dataLayer.push(arguments);}
-		  gtag('js', new Date());
-
-		  gtag('config', 'UA-143752108-1');
-		</script>		
+		<script src="js/bootstrap.min.js"></script>	
 	</head>
 	<body>
 
