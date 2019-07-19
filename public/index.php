@@ -1,19 +1,34 @@
 <?php 
 
-
 $request = $_SERVER['REQUEST_URI'];
+$query_param = trim($_SERVER['QUERY_STRING']);
 
-if (file_exists(__DIR__ . $_SERVER["REQUEST_URI"] . ".php"))
+if (($query_param != "") && (strpos($query_param, "head-to-head=true") !== false))
+{	
+	include $_SERVER['DOCUMENT_ROOT'] . "/../app/service.php";
+
+	$player_1_link 	= $_GET['player_1_link'];
+	$player_2_link 	= $_GET['player_2_link'];
+	$match_type 	= $_GET['match_type'];	
+	$stat_type 		= $_GET['stat_type'];
+	$p1_search 		= $_GET['player_1_search'];
+	$p2_search 		= $_GET['player_2_search'];
+}
+else
 {
-    require(__DIR__ . $_SERVER["REQUEST_URI"] . ".php");
-    exit();
+	if (file_exists(__DIR__ . $_SERVER["REQUEST_URI"] . ".php"))
+	{
+    	require(__DIR__ . $_SERVER["REQUEST_URI"] . ".php");
+    	exit();
+	}
+	else if ($request != "/" && $request != "")
+	{    
+	    include "page_not_found.php";
+	    exit();
+	}
 }
-else if ($request != "/" && $request != "")
-{    
-    include "page_not_found.php";
-    exit();
-}
-    
+
+   
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,9 +82,9 @@ else if ($request != "/" && $request != "")
 
 				<div class="container px-4  mb-4 search-form">
 					<div class='row'>
-							<div class='col-md-5'><i class="fas fa-user-circle"></i><input type='text' class="form-control text-center text-md-right" name='player_1' value='' placeholder='Search Player 1 Name (Ex: Dhoni)'/></div>
+							<div class='col-md-5'><i class="fas fa-user-circle"></i><input type='text' class="form-control text-center text-md-right" name='player_1' value='<?php echo($p1_search); ?>' placeholder='Search Player 1 Name (Ex: Dhoni)'/></div>
 							<div class='col-md-2'><span class='vs-text'>vs</span></div>
-							<div class='col-md-5'><i class="fas fa-user-circle"></i><input type='text' class="form-control text-center text-md-left" name='player_2' value='' placeholder='Search Player 2 Name (Ex: Gilchrist)'/></div>
+							<div class='col-md-5'><i class="fas fa-user-circle"></i><input type='text' class="form-control text-center text-md-left" name='player_2' value='<?php echo($p2_search); ?>' placeholder='Search Player 2 Name (Ex: Gilchrist)'/></div>
 							<div class='offset-md-4 col-md-4'><button class="btn btn-success" onclick="getPlayers(event)">Search</button></div>		
 							<div class='err-msg offset-md-4 col-md-4'>Both player names are required!</div>													
 					</div>					
@@ -78,8 +93,15 @@ else if ($request != "/" && $request != "")
 
 			<p class='loader-first-text'>Loading Player List and Options...</p>
 			<div id='content'>
-				
 				<!-- Player Selection -->
+
+				<?php 
+					if (($p1_search != "") && ($p2_search != "") && ($player_1_link != "") && ($player_2_link != "") && ($match_type != "") && ($stat_type != ""))
+					{
+						echo render_player_list($p1_search, $p2_search, $player_1_link, $player_2_link, $match_type, $stat_type); 						
+					}
+				?>
+				
 			</div>
 
 			<div class='loader'></div>
@@ -153,8 +175,16 @@ else if ($request != "/" && $request != "")
 		<div id='coming-soon' class='px-2'>
 			<p>Compario is best viewed on larger screens such as laptops. More in-depth comparisons, date based filters and player profiles is coming soon.</p>
 		</div>		
-                            
+        
+        <?php 
+			if (($p1_search != "") && ($p2_search != "") && ($player_1_link != "") && ($player_2_link != ""))
+			{
+				echo "<script>
+					comparePlayers();
+				</script>";
+			}
+		?>
+
 		<?php include('footer.inc'); ?>	
-		
 	</body>
 </html>

@@ -50,7 +50,14 @@ function getPlayers(e)
 
 function comparePlayers(e)
 {
-    e.preventDefault();
+    if (e !== undefined)
+    {
+        e.preventDefault();   
+    }
+    
+    var player1 = $("input[name=player_1]").val().trim();
+    var player2 = $("input[name=player_2]").val().trim();  
+
     var player1Link = $("#player-1-selected option:selected").attr('data-index');
     var player2Link = $("#player-2-selected option:selected").attr('data-index'); 
 
@@ -61,6 +68,8 @@ function comparePlayers(e)
     var statType  = $("#stat-type-selected option:selected").val();
     
     var contentWidth = $("#content").width();    
+
+    window.history.pushState("","Compario", "?head-to-head=true&player_1_search="+player1+"&player_2_search="+player2+"&player_1_link="+player1Link+"&player_2_link="+player2Link+"&match_type="+matchType+"&stat_type="+statType);
     
     $(".loader").fadeIn(200);
 
@@ -90,7 +99,8 @@ function comparePlayers(e)
         success: function(data){
             if (data.output != null)
             { 
-                $(".loader").hide();               
+                $(".loader").hide();    
+                $("#player-comp-intro").hide();           
                 $("#player-comparison-wrapper").html(data.output);
                 $('html, body').animate({
                     scrollTop: $("#player-comparison-wrapper").offset().top

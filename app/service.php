@@ -1,6 +1,7 @@
 <?php 
 
-$match_types = array("Tests", "ODIs", "T20Is", "First-class", "List A", "T20s");
+$stat_types 		= array(array("name" => "bat", "value" => "Batting & Fielding"), array("name" => "bowl", "value" => "Bowling"));
+$match_types 		= array("Tests", "ODIs", "T20Is", "First-class", "List A", "T20s");
 $bat_stat_category  = array("Matches", "Innings", "Not Outs", "Runs", "Highest Score", "Batting Average", "Balls Faced", "Strike Rate", "100s", "50s", "4s", "6s", "Catches Taken", "Stumpings Made");
 $bowl_stat_category = array("Matches", "Innings", "Balls Bowled", "Runs Conceded", "Wickets Taken", "Best Bowling Innings", "Best Bowling Match", "Bowling Average", "Economy Rate", "Bowling Strike Rate", "4 Wicket Haul", "5 Wicket Haul", "10 Wicket Haul");
 
@@ -41,7 +42,7 @@ function read_player_list($search_str)
 	return $player_list;
 }
 
-function render_player_list($player_1, $player_2)
+function render_player_list($player_1, $player_2, $player_1_selected = null, $player_2_selected = null, $match = null, $stat = null)
 {
 	$player_1_list = read_player_list(str_replace(" ", "+", $player_1));
 	$player_2_list = read_player_list(str_replace(" ", "+", $player_2));	
@@ -64,7 +65,15 @@ function render_player_list($player_1, $player_2)
 
 			foreach ($player_1_list as $player) 
 			{
-				$html .=  "<option data-index='" . $player->url . "' value='" . $player->id . "'>" . $player->name . "</option>";
+				if ($player->url == $player_1_selected)
+				{
+					$html .=  "<option data-index='" . $player->url . "' selected='selected' value='" . $player->id . "'>" . $player->name . "</option>";
+				}
+				else
+				{
+					$html .=  "<option data-index='" . $player->url . "' value='" . $player->id . "'>" . $player->name . "</option>";	
+				}
+				
 			}
 
 			$html .=  "</select>";
@@ -80,7 +89,14 @@ function render_player_list($player_1, $player_2)
 			
 			foreach ($player_2_list as $player) 
 			{
-				$html .=  "<option data-index='" . $player->url . "' value='" . $player->id . "'>" . $player->name . "</option>";
+				if ($player->url == $player_2_selected)
+				{
+					$html .=  "<option data-index='" . $player->url . "' selected='selected' value='" . $player->id . "'>" . $player->name . "</option>";
+				}
+				else
+				{
+					$html .=  "<option data-index='" . $player->url . "' value='" . $player->id . "'>" . $player->name . "</option>";	
+				}
 			}
 
 			$html .=  "</select>";
@@ -94,7 +110,15 @@ function render_player_list($player_1, $player_2)
 		
 		foreach ($GLOBALS['match_types'] as $match_type) 
 		{
-			$html .=  "<option value='" . $match_type . "'>" . $match_type . "</option>";
+			if ($match_type == $match)
+			{
+				$html .=  "<option selected='selected' value='" . $match_type . "'>" . $match_type . "</option>";
+			}
+			else
+			{
+				$html .=  "<option value='" . $match_type . "'>" . $match_type . "</option>";	
+			}
+			
 		}
 
 		$html .=  "</select>";
@@ -104,8 +128,19 @@ function render_player_list($player_1, $player_2)
 		$html .=  "<div class='col-md-3'>";	
 		$html .=  "<label for='stat-type-selected'>Select Stat Type</label>";
 		$html .=  "<select class='form-control' id='stat-type-selected'>";	
-		$html .=  "<option value='bat'>Batting & Fielding</option>";
-		$html .=  "<option value='bowl'>Bowling</option>";
+
+		foreach ($GLOBALS['stat_types'] as $stat_type) 
+		{
+			if ($stat_type['name'] == $stat)
+			{
+				$html .=  "<option selected='selected' value='" . $stat_type['name'] . "'>" . $stat_type['value'] . "</option>";
+			}
+			else
+			{
+				$html .=  "<option value='" . $stat_type['name'] . "'>" . $stat_type['value'] . "</option>";
+			}
+		}
+		
 		$html .=  "</select>";
 		$html .=  "</div>";
 
@@ -254,7 +289,7 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 		$html .= "</div>";		   
 	}
 
-	$html .= "</div>";
+	$html .= "</div>";	
 	
 	return $html;
 }
