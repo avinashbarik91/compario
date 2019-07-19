@@ -35,8 +35,7 @@ input[type="text"], select option, .form-control {
 }
 
 #player-comp-intro .feature-text:hover {
-	opacity: 1;	
-	cursor: pointer;
+	opacity: 1;		
 }
 
 
@@ -93,7 +92,7 @@ h1 {
 	margin-bottom: 5px;
 }
 
-.about-page-icon.fas.fa-info-circle, .fas.fa-clipboard-list{
+.about-page-icon.fas.fa-info-circle, .fas.fa-clipboard-list, .fas.fa-user-shield{
 	font-size: 1em;
     padding-right: 15px;
 }

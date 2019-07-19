@@ -37,19 +37,19 @@
 					<div class='offset-md-2 col-md-8 p-5'>
 						<h1 class='mb-4'><i class="about-page-icon fas fa-info-circle"></i>About</h1>
 						<p>
-							Compario was created for all cricket lovers who love to their stats. Unfortunately, while there were a lot of sites that show stats for your favorite cricket players, none of them really have the ability to compare players in one go. 
+							Compario was created for all cricket lovers who love their cricket stats. There are a lot of sites that show stats for your favorite cricket players, howeve, none of them really have the ability to compare players in one go. 
 
 							<br/><br/>
 
-							So during the Cricket World Cup 2019, when there was a lot of chatter around who plays better than who, this idea took shape to create a service that allows cricket fans to actually compare stats for their favorite cricket players head-to-head. From time to time this service definitely throws up some interesting stats at you which provie great insights to the performance of players.
+							During the Cricket World Cup 2019, when there was a lot of chatter around who plays better than who, this idea took shape to create a service that allows cricket fans to actually compare stats of their favorite cricket players head-to-head. Compario reveals some interesting stats which provide great insights to the performance of players.
 						</p>
 
 						<p>	
-							Compario specialises in head to head stats comparison for players and compares players on many stats across Batting, Fielding and Bowling. It also has features to filter based on match type. From the most basic stat like number of matches played, to the more complex comparisons, Compario gives you all the information you need in the most intuitive and simple format. So if you need instant access to detailed player comparions from our beloved game of cricket, this site is for you! 
+							Compario specialises in head to head stats comparison for players and compares players on many stats across Batting, Fielding and Bowling. It also has features to filter results based on match type. From the most basic stat like number of matches played, to the more complex comparisons, Compario gives you all the information you need in the most intuitive and simple format. So if you need instant access to detailed player comparions from our beloved game of cricket, this site is for you! 
 						</p>
 
 						<p>
-							We are working to improve the user experience and make the site more helpful to users by providing additional filters, adding player profiles etc. If you have any comments or suggestions please do not hesitate to contact us. 
+							We are working to improve the user experience and make the site more helpful to users by providing additional filters, adding player profiles etc. If you have any comments or suggestions please do not hesitate to <a href='mailto:avinashbarik91@gmail.com'>contact us.</a> 
 						</p>	
 							
 						<p>We would to hear your feedback and discuss more about the game we all love so much.</p>

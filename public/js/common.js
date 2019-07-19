@@ -60,19 +60,18 @@ function comparePlayers(e)
     var matchType = $("#match-type-selected option:selected").val();
     var statType  = $("#stat-type-selected option:selected").val();
     
-    var contentWidth = $("#content").width();
+    var contentWidth = $("#content").width();    
     
-    $("#player-comp-intro").fadeOut(200);
-    $(".loader").fadeIn(500);
+    $(".loader").fadeIn(200);
 
      $('html, body').animate({
         scrollTop: $(".loader").offset().top
     }, 500);
 
-     
     $("#player-comparison-wrapper").show();
     $("#player-comparison-wrapper").html("<p class='loader-text'>Crunching Data...</p>");
-    $("#compare-new-btn").slideUp(200);
+    $("#compare-new-btn").hide();
+    $("#player-comp-intro").hide();
 
     $.ajax({
         url: "compare.php",
