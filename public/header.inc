@@ -13,7 +13,8 @@
 				<a class="nav-item nav-link" href="/">Home</a>
 				<a class="nav-item nav-link" href="/about">About</a>
 				<a class="nav-item nav-link" href="/changelog">Changelog</a>	
-				<a class="nav-item nav-link" href="/privacy">Privacy</a>								
+				<a class="nav-item nav-link" href="/privacy">Privacy</a>
+				<a class="nav-item nav-link" href="/disclaimer">Disclaimer</a>								
 			</div>
 		</div>
 	</div>
