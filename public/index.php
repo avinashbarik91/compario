@@ -77,7 +77,7 @@ else
 			<?php include('header.inc'); ?>
 
 			<div id="header-wrapper">
-				<h1 class='display-3 px-4'>Compario<span class='beta'> v1.2</span></h1>
+				<h1 class='display-3 px-4'>Compario<span class='beta'> v1.3</span></h1>
 				<p>Compare cricket player stats head-to-head</p>
 
 				<div class="container px-4  mb-4 search-form">

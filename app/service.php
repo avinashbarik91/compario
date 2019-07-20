@@ -294,7 +294,7 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 	$html .= "<div>
 				<div class='col-md-12'><button id='compare-new-btn-alt' class='btn btn-success'>Start New Comparison</button></div>
 			  </div>";	
-
+			  
 	$full_share_link 	= "https://compario.dev/" . $share_link;
 	$share_str 			= $player_1_clean_name . " vs " . $player_2_clean_name;
 	$html 				.= render_share_buttons($full_share_link, $share_str);			  
