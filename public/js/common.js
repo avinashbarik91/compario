@@ -129,6 +129,10 @@ function comparePlayers(e)
     });
 }
 
+window.addEventListener('popstate', function(event) {
+  window.location.href = window.location.href;
+});
+
 $(document).ready(function(){    
     $("#compare-new-btn").on('click', function(){
         $('html, body').animate({
