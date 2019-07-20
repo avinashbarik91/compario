@@ -78,8 +78,7 @@ function comparePlayers(e)
     }, 500);
 
     $("#player-comparison-wrapper").show();
-    $("#player-comparison-wrapper").html("<p class='loader-text'>Crunching Data...</p>");
-    $("#compare-new-btn").hide();
+    $("#player-comparison-wrapper").html("<p class='loader-text'>Crunching Data...</p>");    
     $("#player-comp-intro").hide();
 
     $.ajax({
@@ -116,7 +115,21 @@ function comparePlayers(e)
                     }, 400); 
                 }, 500); 
 
+                $("#compare-new-btn-alt").on('click', function(){
+                    $('html, body').animate({
+                        scrollTop: $("#body-content-wrapper").offset().top
+                    }, 500);
+
+                $("#player-comparison-wrapper").fadeOut(500);
+                $("#player-comp-intro").fadeIn(500);
                 $("#compare-new-btn").slideDown(200);
+                $("#content").slideUp(200);
+                $(".err-msg").slideUp(200);
+                $("input[name=player_1]").val("");
+                $("input[name=player_2]").val("");  
+                window.history.pushState("","Compario","/");
+
+                });
             }
             else
             {
@@ -145,7 +158,8 @@ $(document).ready(function(){
     $("#content").slideUp(200);
     $(".err-msg").slideUp(200);
     $("input[name=player_1]").val("");
-    $("input[name=player_2]").val("");  
+    $("input[name=player_2]").val("");
+    window.history.pushState("","Compario","/");  
 
     });
 });

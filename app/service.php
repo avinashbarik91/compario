@@ -289,7 +289,36 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 		$html .= "</div>";		   
 	}
 
-	$html .= "</div>";	
+	$html .= "</div>";
+
+	$html .= "<div>
+				<div class='col-md-12'><button id='compare-new-btn-alt' class='btn btn-success'>Start New Comparison</button></div>
+			  </div>";			  
+
+	$html .= '<div class="container mt-5">
+        		<div class="row">
+	        		<div class="col-md-12">
+	        			<h4>Enjoyed this comparison? Comment and share with friends</h4>
+	        			<div id="disqus_thread"></div>
+							<script>		
+								var disqus_config = function () {
+								this.page.url = "https://compario.dev/head_to_head";  
+								this.page.identifier = "home-page-id"; 
+								};
+			
+									(function() {
+									var d = document, s = d.createElement("script");
+									s.src = "https://compario-1.disqus.com/embed.js";
+									s.setAttribute("data-timestamp", +new Date());
+									(d.head || d.body).appendChild(s);
+									})();
+							</script>
+							<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	        		</div>
+	        	</div>
+	        </div>';
+
+	
 	
 	return $html;
 }

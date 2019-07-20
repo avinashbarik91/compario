@@ -110,8 +110,16 @@ else
 
 		<div id='player-comp-intro' class='container'>
 
-			<div class='row'>
-				
+			<div class='row'>				
+				<div class='col-md-12 px-5'>
+					<h1>Welcome to Compario</h2>
+					<h3 class='mb-4'>The only cricket player comparison site you will ever need</h3>
+					<h5 class='mb-5'>Simple and Easy to use Cricket Player Comparison
+					Compario specialises in head to head stats comparison for cricket players and compares players on multiple metrics across Batting, Fielding and Bowling</h5>
+				</div>
+			</div>
+
+			<div class='row'>				
 				<div class='col-md-12 px-5'>
 					<h2><u>Features</u></h2>
 				</div>
@@ -121,7 +129,7 @@ else
 				
 				<div class='features col-md-6'>
 					<div class='feature-text p-5 m-5'>
-						<i class="fas fa-balance-scale"></i></i><h3 class='px-4 mb-3'>Head-to-Head Player Comparison</h3>
+						<i class="fas fa-balance-scale"></i></i><h3 class='px-4 mb-3'>Head to Head Player Comparison</h3>
 						<p class='px-4'>Unique comparison for players based on more than 15 metrics such as Batting Average, Best Bowling Figures, Strike Rate etc.</p>
 					</div>
 				</div>
@@ -153,24 +161,42 @@ else
 
 			</div>
 
-			<div class='row'>				
+			<div class='row mb-5'>				
 				<div class='col-md-12 px-5'>
 					<h2 class='mb-3'><u>Sneak Peek</u></h2>
-					<img class='feature-img' src='static/feat-img.png'/>
+					<img class='feature-img' alt='Compario sneak peek feature image' src='static/feat-img.png'/>
 				</div>
 
 			</div>
+
+			<div class='row mb-3'>				
+				<div class='col-md-12 px-5'>
+					<h2><u>How to use</u></h2>
+					<h5>Using Compario is super easy. Just follow the three steps given below</h5>
+				</div>
+			</div>
+
+			<div class='row mb-5'>				
+				<div class='offset-md-2 col-md-8 px-5'>
+					<ul>
+						<li>Enter first, last or full names of the players you wish to compare</li>
+						<li>Select players, match type and stat type from the drop-down options & hit Compare</li>
+						<li>View detailed comparison and share it with your cricket loving friends</li>
+					</ul>
+				</div>
+			</div>
+
+			<div id='home-page-new-compare-btn'>
+				<div class='col-md-12'><button id='compare-new-btn' class='btn btn-success'>Start New Comparison</button></div>
+			</div>
+
 
 		</div>
 		
 		<div id='player-comparison-wrapper'>
 			<!-- Player Comparison -->
 			
-		</div>
-
-		<div>
-			<div class='col-md-12'><button id='compare-new-btn' class='btn btn-success'>Start New Comparison</button></div>
-		</div>
+		</div>	
 		
 		<div id='coming-soon' class='px-2'>
 			<p>Compario is best viewed on larger screens such as laptops. More in-depth comparisons, date based filters and player profiles is coming soon.</p>

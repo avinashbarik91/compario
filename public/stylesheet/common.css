@@ -47,8 +47,7 @@ input[type="text"], select option, .form-control {
 }
 
 #player-comp-intro .feature-img:hover {
-	opacity: 1;
-	cursor: pointer;
+	opacity: 1;	
 }
 
 #player-comp-intro .fas {
@@ -92,7 +91,7 @@ h1 {
 	margin-bottom: 5px;
 }
 
-.about-page-icon.fas.fa-info-circle, .fas.fa-clipboard-list, .fas.fa-user-shield{
+.about-page-icon.fas.fa-info-circle, .fas.fa-clipboard-list, .fas.fa-user-shield, .fas.fa-exclamation-triangle{
 	font-size: 1em;
     padding-right: 15px;
 }

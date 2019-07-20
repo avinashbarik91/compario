@@ -37,7 +37,7 @@
 			<div class='container px-5 additional-wrapper'>
 				<div class='row'>
 					<div class='offset-md-2 col-md-8 p-5'>
-						<h1 class='mb-4'><i class="fas fa-user-shield"></i>Disclaimer</h1>
+						<h1 class='mb-4'><i class="fas fa-exclamation-triangle"></i>Disclaimer</h1>
 						<p>Last updated: July 19, 2019.</p>
 						<p class='mb-5'>If you require any more information or have any questions about our site's disclaimer, please feel free to contact us by email at avinashbarik91@gmail.com</p>
 
