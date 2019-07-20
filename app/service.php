@@ -294,7 +294,7 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 	$html .= "<div>
 				<div class='col-md-12'><button id='compare-new-btn-alt' class='btn btn-success'>Start New Comparison</button></div>
 			  </div>";	
-			  
+
 	$full_share_link 	= "https://compario.dev/" . $share_link;
 	$share_str 			= $player_1_clean_name . " vs " . $player_2_clean_name;
 	$html 				.= render_share_buttons($full_share_link, $share_str);			  
@@ -333,13 +333,13 @@ function render_share_buttons($share_link, $share_str)
         			<div class="col-md-12 post-share-btns pt-2">
 						<h4>Enjoyed ' . $share_str . '? Drop a comment below and share with friends</h4>
 						<!-- Twitter -->
-						<a alt="Share on Twitter" title="Share on Twitter" href="https://twitter.com/intent/tweet?text=' . $share_str . '&url=' . $share_link . '&via=avinashbarik91" target="_blank" class="twitter-share-btn"><i class="fab fa-twitter-square"></i></a>
+						<a alt="Share on Twitter" title="Share on Twitter" href="https://twitter.com/intent/tweet?text=' . $share_str . '&url=' . rawurlencode($share_link) . '&via=avinashbarik91" target="_blank" class="twitter-share-btn"><i class="fab fa-twitter-square"></i></a>
 
 						<!-- Facebook -->
-						<a alt="Share on Facebook" title="Share on Facebook" href="https://www.facebook.com/sharer/sharer.php?u=' . $share_link .'" target="_blank" class="facebook-share-btn"><i class="fab fa-facebook-square"></i></a>
+						<a alt="Share on Facebook" title="Share on Facebook" href="https://www.facebook.com/sharer/sharer.php?u=' . rawurlencode($share_link) .'" target="_blank" class="facebook-share-btn"><i class="fab fa-facebook-square"></i></a>
 
 						<!-- LinkedIn -->
-						<a alt="Share on LinkedIn" title="Share on LinkedIn" href="https://www.linkedin.com/shareArticle?mini=true&url=' . $share_link . '&title=' . $share_str . '&source='. $share_link .'&summary=' . $share_str.'" target="_blank" class="linked-in-share-btn"><i class="fab fa-linkedin"></i></a>							
+						<a alt="Share on LinkedIn" title="Share on LinkedIn" href="https://www.linkedin.com/shareArticle?mini=true&url=' . rawurlencode($share_link) . '&title=' . $share_str . '&source=https://www.compario.dev&summary=' . $share_str.'" target="_blank" class="linked-in-share-btn"><i class="fab fa-linkedin"></i></a>							
 					</div>
 				</div>
 			</div>';
