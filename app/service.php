@@ -306,7 +306,7 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 							<script>		
 								var disqus_config = function () {
 								this.page.url = "https://compario.dev/' . $share_link .'";  
-								this.page.identifier = "head-to-head"; 
+								this.page.identifier = "head-to-head-1"; 
 								};
 			
 									(function() {
