@@ -295,13 +295,13 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 				<div class='col-md-12'><button id='compare-new-btn-alt' class='btn btn-success'>Start New Comparison</button></div>
 			  </div>";	
 
-	$full_share_link 	= "https://compario.dev/" . $share_link;
-	$share_str 			= $player_1_clean_name . " vs " . $player_2_clean_name;
-	$html 				.= render_share_buttons($full_share_link, $share_str);			  
+
+	$share_str 			= $player_1_clean_name . " vs " . $player_2_clean_name;		  
 
 	$html .= '<div class="container mt-5">
         		<div class="row">
-	        		<div class="col-md-12">	        			
+	        		<div class="col-md-12">	
+	        		<h4>Enjoyed ' . $share_str . '? Drop a comment below and share with friends</h4>        			
 	        			<div id="disqus_thread"></div>
 							<script>		
 								var disqus_config = function () {
@@ -331,7 +331,7 @@ function render_share_buttons($share_link, $share_str)
 	return '<div class="container mt-5 mb-5">
         		<div class="row">        		
         			<div class="col-md-12 post-share-btns pt-2">
-						<h4>Enjoyed ' . $share_str . '? Drop a comment below and share with friends</h4>
+						
 						<!-- Twitter -->
 						<a alt="Share on Twitter" title="Share on Twitter" href="https://twitter.com/intent/tweet?text=' . $share_str . '&url=' . rawurlencode($share_link) . '&via=avinashbarik91" target="_blank" class="twitter-share-btn"><i class="fab fa-twitter-square"></i></a>
 
