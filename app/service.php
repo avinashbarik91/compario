@@ -190,10 +190,10 @@ function read_player_comparison($player_1_link, $player_2_link, $stat_type)
 	}	
 }
 
-function render_players_comparison($player_1_link, $player_1_name, $player_2_link, $player_2_name, $match_type, $stat_type, $content_width)
+function render_players_comparison($player_1_link, $player_1_name, $player_2_link, $player_2_name, $match_type, $stat_type, $content_width, $share_link)
 {
 	$player_stats = read_player_comparison($player_1_link, $player_2_link, $stat_type);
-	
+		
 	if ($stat_type == "bat")
 	{
 		$stats_keys = $GLOBALS['bat_stat_category'];
@@ -289,21 +289,24 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 		$html .= "</div>";		   
 	}
 
-	$html .= "</div>";
+	$html .= "</div>";	
 
 	$html .= "<div>
 				<div class='col-md-12'><button id='compare-new-btn-alt' class='btn btn-success'>Start New Comparison</button></div>
-			  </div>";			  
+			  </div>";	
+
+	$full_share_link 	= "https://compario.dev/" . $share_link;
+	$share_str 			= $player_1_clean_name . " vs " . $player_2_clean_name;
+	$html 				.= render_share_buttons($full_share_link, $share_str);			  
 
 	$html .= '<div class="container mt-5">
         		<div class="row">
-	        		<div class="col-md-12">
-	        			<h4>Enjoyed this comparison? Comment and share with friends</h4>
+	        		<div class="col-md-12">	        			
 	        			<div id="disqus_thread"></div>
 							<script>		
 								var disqus_config = function () {
-								this.page.url = "https://compario.dev/head_to_head";  
-								this.page.identifier = "home-page-id"; 
+								this.page.url = "https://compario.dev/' . $share_link .'";  
+								this.page.identifier = "head-to-head"; 
 								};
 			
 									(function() {
@@ -321,6 +324,25 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 	
 	
 	return $html;
+}
+
+function render_share_buttons($share_link, $share_str)
+{
+	return '<div class="container mt-5 mb-5">
+        		<div class="row">        		
+        			<div class="col-md-12 post-share-btns pt-2">
+						<h4>Enjoyed ' . $share_str . '? Drop a comment below and share with friends</h4>
+						<!-- Twitter -->
+						<a alt="Share on Twitter" title="Share on Twitter" href="https://twitter.com/intent/tweet?text=' . $share_str . '&url=' . $share_link . '&via=avinashbarik91" target="_blank" class="twitter-share-btn"><i class="fab fa-twitter-square"></i></a>
+
+						<!-- Facebook -->
+						<a alt="Share on Facebook" title="Share on Facebook" href="https://www.facebook.com/sharer/sharer.php?u=' . $share_link .'" target="_blank" class="facebook-share-btn"><i class="fab fa-facebook-square"></i></a>
+
+						<!-- LinkedIn -->
+						<a alt="Share on LinkedIn" title="Share on LinkedIn" href="https://www.linkedin.com/shareArticle?mini=true&url=' . $share_link . '&title=' . $share_str . '&source='. $share_link .'&summary=' . $share_str.'" target="_blank" class="linked-in-share-btn"><i class="fab fa-linkedin"></i></a>							
+					</div>
+				</div>
+			</div>';
 }
 
 function read_batting_and_fielding_stats($player_link, &$player_image)

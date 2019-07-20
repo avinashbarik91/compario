@@ -110,6 +110,12 @@ h1 {
 	border-radius: 20px;
 }
 
+.post-share-btns a{
+	font-size: 3rem;
+	color: #EDF5E1 !important;
+	padding: 5px;
+}
+
 .loader {
 	background-image: url(../static/flat-bouncing-circle-loading-icon.svg);
     width: 50px;

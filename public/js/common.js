@@ -68,8 +68,8 @@ function comparePlayers(e)
     var statType  = $("#stat-type-selected option:selected").val();
     
     var contentWidth = $("#content").width();    
-
-    window.history.pushState("","Compario", "?head-to-head=true&player_1_search="+player1+"&player_2_search="+player2+"&player_1_link="+player1Link+"&player_2_link="+player2Link+"&match_type="+matchType+"&stat_type="+statType);
+    var shareLink = "?head-to-head=true&player_1_search="+player1+"&player_2_search="+player2+"&player_1_link="+player1Link+"&player_2_link="+player2Link+"&match_type="+matchType+"&stat_type="+statType;
+    window.history.pushState("","Compario", shareLink);
     
     $(".loader").fadeIn(200);
 
@@ -93,7 +93,8 @@ function comparePlayers(e)
                 player_2_name: player2Name,
                 match_type: matchType,
                 stat_type: statType,
-                content_width: contentWidth
+                content_width: contentWidth,
+                share_link: shareLink
             },
         success: function(data){
             if (data.output != null)
@@ -115,6 +116,8 @@ function comparePlayers(e)
                     }, 400); 
                 }, 500); 
 
+                document.title = "Compario | " + player1 + " vs " + player2;
+                
                 $("#compare-new-btn-alt").on('click', function(){
                     $('html, body').animate({
                         scrollTop: $("#body-content-wrapper").offset().top
@@ -128,7 +131,6 @@ function comparePlayers(e)
                 $("input[name=player_1]").val("");
                 $("input[name=player_2]").val("");  
                 window.history.pushState("","Compario","/");
-
                 });
             }
             else
