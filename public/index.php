@@ -49,6 +49,7 @@ else
 		    enable_page_level_ads: true
 		  });
 		</script>	
+		<script type='text/javascript' src='//pl15079272.pvclouds.com/d3/0f/e6/d30fe6ed1a4dd93b51e050482e45d762.js'></script>		
 		<title>Compario | Simple head-to-head comparison for cricket players</title>
 		<meta charset="UTF-8">
 		<meta http-equip="X-UA-Compatible" content="IE=edge">
@@ -68,8 +69,7 @@ else
 		<script src="js/jquery.min.js"></script>
 		<script src="js/common.js"></script>
 		<script src="js/popper.js"></script>		
-		<script src="js/bootstrap.min.js"></script>	
-		<script type='text/javascript' src='//pl15079272.pvclouds.com/d3/0f/e6/d30fe6ed1a4dd93b51e050482e45d762.js'></script>		
+		<script src="js/bootstrap.min.js"></script>			
 	</head>
 	<body>
 
