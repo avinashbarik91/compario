@@ -295,7 +295,7 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 				<div class='col-md-12'><button id='compare-new-btn-alt' class='btn btn-success'>Start New Comparison</button></div>
 			  </div>";	
 
-	$htnl .= "<script type='text/javascript'>
+	$html .= "<script type='text/javascript'>
 					atOptions = {
 						'key' : '30f2871c3697cdb99b29467a9c6f638f',
 						'format' : 'iframe',
@@ -303,7 +303,7 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 						'width' : 468,
 						'params' : {}
 					};
-			document.write('<scr' + 'ipt type='text/javascript' src='http' + (location.protocol === 'https:' ? 's' : '') + '://www.bcloudhost.com/30f2871c3697cdb99b29467a9c6f638f/invoke.js'></scr' + 'ipt>');
+			document.write('<scr' + 'ipt type='text/javascript' src=http' + (location.protocol === 'https:' ? 's' : '') + '://www.bcloudhost.com/30f2871c3697cdb99b29467a9c6f638f/invoke.js'></scr + 'ipt>');
 		</script>";
 			  	
 	$share_str 			= $player_1_clean_name . " vs " . $player_2_clean_name;		  
