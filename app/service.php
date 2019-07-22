@@ -291,9 +291,15 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 
 	$html .= "</div>";	
 
-	$html .= "<div>
+	$html .= "<div class='row px-5 mb-5'>
 				<div class='col-md-12'><button id='compare-new-btn-alt' class='btn btn-success'>Start New Comparison</button></div>
-			  </div>";		
+			  </div>";	
+
+	$html .= '<div class="row px-5">
+				<div class="offset-md-3 col-md-6"><h5>Check out this month\'s recommended cricket product</h5></div>
+
+				<div class="offset-md-3 col-md-6"><u><a target="_blank" href="https://www.amazon.com.au/gp/product/172938918X/ref=as_li_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=172938918X&linkCode=as2&tag=avinashbarik-22&linkId=402b5857d37c87c94c75af78376636b1">All My Cricket Heroes Autograph Book: For the Fans of Famous and Undiscovered Cricket Players, Who Dream to Have Memorabilia Filled with Their Athletic Sports Idols Signatures and Pictures.</a><img src="//ir-au.amazon-adsystem.com/e/ir?t=avinashbarik-22&l=am2&o=36&a=172938918X" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></u></div>
+			  </div>';				  	
 			  	
 	$share_str 			= $player_1_clean_name . " vs " . $player_2_clean_name;		  
 
