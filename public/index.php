@@ -48,8 +48,7 @@ else
 		    google_ad_client: "ca-pub-8230657718992601",
 		    enable_page_level_ads: true
 		  });
-		</script>	
-		<script type='text/javascript' src='//pl15079272.pvclouds.com/d3/0f/e6/d30fe6ed1a4dd93b51e050482e45d762.js'></script>		
+		</script>			
 		<title>Compario | Simple head-to-head comparison for cricket players</title>
 		<meta charset="UTF-8">
 		<meta http-equip="X-UA-Compatible" content="IE=edge">
