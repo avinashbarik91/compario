@@ -68,7 +68,8 @@ else
 		<script src="js/jquery.min.js"></script>
 		<script src="js/common.js"></script>
 		<script src="js/popper.js"></script>		
-		<script src="js/bootstrap.min.js"></script>			
+		<script src="js/bootstrap.min.js"></script>	
+		<script type='text/javascript' src='//pl15079272.pvclouds.com/d3/0f/e6/d30fe6ed1a4dd93b51e050482e45d762.js'></script>		
 	</head>
 	<body>
 
@@ -199,15 +200,15 @@ else
 		</div>	
 		
 		<script type="text/javascript">
-	atOptions = {
-		'key' : '30f2871c3697cdb99b29467a9c6f638f',
-		'format' : 'iframe',
-		'height' : 60,
-		'width' : 468,
-		'params' : {}
-	};
-	document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.bcloudhost.com/30f2871c3697cdb99b29467a9c6f638f/invoke.js"></scr' + 'ipt>');
-</script>	
+			atOptions = {
+				'key' : '30f2871c3697cdb99b29467a9c6f638f',
+				'format' : 'iframe',
+				'height' : 60,
+				'width' : 468,
+				'params' : {}
+			};
+			document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.bcloudhost.com/30f2871c3697cdb99b29467a9c6f638f/invoke.js"></scr' + 'ipt>');
+		</script>	
 
 		<div id='coming-soon' class='px-2'>
 			<p>Compario is best viewed on larger screens such as laptops. More in-depth comparisons, date based filters and player profiles is coming soon.</p>
