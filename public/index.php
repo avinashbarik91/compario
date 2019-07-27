@@ -41,14 +41,7 @@ else
 		  gtag('js', new Date());
 
 		  gtag('config', 'UA-144172971-1');
-		</script>
-		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-		<script>
-		  (adsbygoogle = window.adsbygoogle || []).push({
-		    google_ad_client: "ca-pub-8230657718992601",
-		    enable_page_level_ads: true
-		  });
-		</script>			
+		</script>					
 		<title>Compario | Simple head-to-head comparison for cricket players</title>
 		<meta charset="UTF-8">
 		<meta http-equip="X-UA-Compatible" content="IE=edge">
