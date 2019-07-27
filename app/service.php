@@ -295,31 +295,7 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 				<div class='row px-5 mb-5'>
 					<div class='col-md-12'><button id='compare-new-btn-alt' class='btn btn-success'>Start New Comparison</button></div>
 			  	</div>
-			  </div>";	
-
-	$html .= '<div class="container mb-5">
-				<div class="row px-5 mb-3">
-					<div class="offset-md-3 col-md-6"><h5>Check out this month\'s recommended cricket related products</h5></div>
-			  	</div>
-
-				<div class="row px-5 aff-links">  
-					<div class="col-md-3 p-3">
-						<i class="fas fa-link"></i><a target="_blank" href="https://www.amazon.com.au/gp/product/172938918X/ref=as_li_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=172938918X&linkCode=as2&tag=avinashbarik-22&linkId=402b5857d37c87c94c75af78376636b1">All My Cricket Heroes Autograph Book</a><img src="//ir-au.amazon-adsystem.com/e/ir?t=avinashbarik-22&l=am2&o=36&a=172938918X" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
-				  	</div>
-
-				  	<div class="col-md-3 p-3">
-				  		<i class="fas fa-link"></i><a target="_blank" href="https://www.amazon.com.au/gp/product/B0743CQM2P/ref=as_li_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=B0743CQM2P&linkCode=as2&tag=avinashbarik-22&linkId=dec83341aeea57299109039ced6ad7a6">The Journey: My story, from backyard cricket to Australian Captain</a><img src="//ir-au.amazon-adsystem.com/e/ir?t=avinashbarik-22&l=am2&o=36&a=B0743CQM2P" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />				  		
-				  	</div>
-
-				  	<div class="col-md-3 p-3">
-				  		<i class="fas fa-link"></i><a target="_blank" href="https://www.amazon.com.au/gp/product/B077TF24GK/ref=as_li_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=B077TF24GK&linkCode=as2&tag=avinashbarik-22&linkId=8476b2b9883a3aa5c98134e825b25642">PUMA Boys Evospeed-4 Right Cricket Set</a><img src="//ir-au.amazon-adsystem.com/e/ir?t=avinashbarik-22&l=am2&o=36&a=B077TF24GK" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
-				  	</div>
-
-				  	<div class="col-md-3 p-3">
-				  		<i class="fas fa-link"></i><a target="_blank" href="https://www.amazon.com.au/gp/product/B07F943HTJ/ref=as_li_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=B07F943HTJ&linkCode=as2&tag=avinashbarik-22&linkId=e5f3c0080fd5bac389e4be94444e4b23">Auto Cricket Soft Ball shooter and thrower kid toy by Lenoxx</a><img src="//ir-au.amazon-adsystem.com/e/ir?t=avinashbarik-22&l=am2&o=36&a=B07F943HTJ" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
-				  	</div>
-				</div>
-			</div>';
+			  </div>";		
 				  				  	
 			  	
 	$share_str 			= $player_1_clean_name . " vs " . $player_2_clean_name;		  
