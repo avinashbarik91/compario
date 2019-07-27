@@ -21,7 +21,7 @@ else
     	require(__DIR__ . $_SERVER["REQUEST_URI"] . ".php");
     	exit();
 	}
-	else if ($request != "/" && $request != "")
+	else if ($request != "/" && $request != "" && strpos($request, "fbclid=") == 0)
 	{    
 	    include "page_not_found.php";
 	    exit();
