@@ -43,7 +43,19 @@
 
 				<div class='row change-info mb-3'>
 					<div class='date-col col-md-3 p-1'>
-						<p><span class='current-release'>&#9658 </span>20th July 2019</p>	
+						<p><span class='current-release'>&#9658 </span>27th July 2019</p>	
+					</div>					
+					<div class='desc-col col-md-6 p-1'>								
+						<p>Improved usability by adding Quick Compare to compare your favourite players with one click.</p>
+					</div>
+					<div class='version-col col-md-3 p-1'>								
+						<p>v1.31</p>
+					</div>
+				</div>
+
+				<div class='row change-info mb-3'>
+					<div class='date-col col-md-3 p-1'>
+						<p>20th July 2019</p>	
 					</div>					
 					<div class='desc-col col-md-6 p-1'>								
 						<p>Added ability to dynamically render comparisons based on URLs and added social engagement functions with DISQUS comments and share buttons.</p>
