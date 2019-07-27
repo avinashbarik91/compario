@@ -26,39 +26,39 @@ a {
 	color: #EDF5E1 !important;
 }
 
-#player-comp-intro {
+.player-comp-intro {
 	margin-top: 50px;
 	padding-bottom: 20px;
 }
 
-#player-comp-intro .feature-text {
+.player-comp-intro .feature-text {
 	background-color: #05386b;
     border-radius: 20px;
     opacity: 0.8;
     transition: opacity 0.2s;	
 }
 
-#player-comp-intro .feature-text:hover {
+.player-comp-intro .feature-text:hover {
 	opacity: 1;		
 }
 
 
-#player-comp-intro .feature-img {
+.player-comp-intro .feature-img {
 	width: 100%;
 	border-radius: 20px;
 	opacity: 0.8;
 	transition: opacity 0.2s;
 }
 
-#player-comp-intro .feature-img:hover {
+.player-comp-intro .feature-img:hover {
 	opacity: 1;	
 }
 
-#player-comp-intro .fas {
+.player-comp-intro .fas {
 	padding: 15px;
 }
 
-#player-comp-intro .container {
+.player-comp-intro .container {
 	padding: 20px 0px 20px 0px;
 }
 
@@ -157,12 +157,6 @@ h1 {
 	background-color: #05386b;	
 }
 
-#coming-soon {
-	position: absolute;	
-	width: 100%;
-	bottom: -80px;
-}
-
 .footer a {
 	padding-top: 10px;
 	color: #EDF5E1 !important;
@@ -231,10 +225,6 @@ label {
 .vs-text {
 	font-size: 5.5rem;
 	font-family: 'Righteous', sans-serif;
-}
-
-.btn {
-	width: 150px;
 }
 
 .fas {
@@ -310,6 +300,66 @@ legend {
 	border-bottom: 1px solid #edf5e126;
 }
 
+.quick-searches-row .quick-searches-wrapper{
+	height: 350px;	
+	border-radius: 30px;
+}
+
+.quick-searches-row a:hover{
+	text-decoration: none !important;
+}
+
+.quick-search-content{
+	background-image: linear-gradient(to bottom, transparent, #060c2a);
+    border-radius: 20px;
+    opacity: 1;   
+    height: 350px;
+    transition: opacity 0.4s;
+}
+
+.quick-search-content:hover{
+	opacity: 0.8;
+}
+
+.quick-searches-wrapper.first {
+	background-image: url(../static/kohli-vs-kane.png);
+}
+
+.quick-searches-wrapper.second {
+	background-image: url(../static/smith-vs-root.png);
+}
+
+.quick-searches-wrapper.third {
+	background-image: url(../static/bumrah-vs-ferguson.png);
+}
+
+
+.quick-searches-wrapper {	
+    background-position: center;  
+    background-repeat: no-repeat;
+}
+
+.quick-search-text {
+	height: 350px;    
+    padding: 20px;    
+    transition: opacity 0.2s;
+}
+
+
+.quick-search-text h4 {
+	padding-top: 230px;
+}
+
+.btn {
+	width: 200px;
+}
+
+#coming-soon {
+    position: absolute;    
+    width: 100%;
+    bottom: -80px;
+}
+
 @media screen and (max-width:1100px) {
 
 	#body-content-wrapper {
@@ -321,19 +371,15 @@ legend {
 		bottom: -145px;		
 	}
 
-	#coming-soon {		
-		bottom: -100px;
-	}	
+	#coming-soon {        
+        bottom: -100px;
+    }    	
 }
 
 @media screen and (max-width:767px) {	
 	.player-profiles .display-4 {
 		margin-top: 0px !important;
-	}	
-
-	#coming-soon {
-		bottom: -130px;
-	}			
+	}				
 
 	.player-stat-chart-container {
 		margin-top: 30px;
@@ -367,12 +413,16 @@ legend {
 		bottom: -170px;		
 	}
 
-	#player-comp-intro .feature-text {
+	#coming-soon {        
+        bottom: -130px;
+    }
+
+	.player-comp-intro .feature-text {
 		opacity: 1;			
 	}
 
 
-	#player-comp-intro .feature-img {
+	.player-comp-intro .feature-img {
 		opacity: 1;
 	}
 

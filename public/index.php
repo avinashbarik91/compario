@@ -101,99 +101,80 @@ else
 
 		</div>
 
-		<div id='player-comp-intro' class='container'>
+		<div class='container player-comp-intro'>
 
 			<div class='row'>				
 				<div class='col-md-12 px-5'>
-					<h1>Welcome to Compario</h2>
-					<h3 class='mb-4'>The only cricket player comparison site you will ever need</h3>
-					<h5 class='mb-5'>Simple and Easy to use Cricket Player Comparison
-					Compario specialises in head to head stats comparison for cricket players and compares players on multiple metrics across Batting, Fielding and Bowling</h5>
+					<h2 class='display-4'>Compare Cricket Players</h2>	
+
+					<h5>Simple and Easy to use Cricket Player Comparison</h5>
+					<h5 class='mb-5'>Compare cricket players head to head on multiple metrics across Batting, Fielding and Bowling</h5>
+
+					<p class='mb-5'><em>Quick Compare below or start Search above</em></p>
 				</div>
 			</div>
 
-			<div class='row'>				
-				<div class='col-md-12 px-5'>
-					<h2><u>Features</u></h2>
-				</div>
+			<div class='row mb-2'>				
+				<div class='offset-md-2 col-md-8 px-5'>
+					<h2>Quick Compare</h2>
+				</div>				
 			</div>
 
-			<div class='row'>
-				
-				<div class='features col-md-6'>
-					<div class='feature-text p-5 m-5'>
-						<i class="fas fa-balance-scale"></i></i><h3 class='px-4 mb-3'>Head to Head Player Comparison</h3>
-						<p class='px-4'>Unique comparison for players based on more than 15 metrics such as Batting Average, Best Bowling Figures, Strike Rate etc.</p>
-					</div>
-				</div>
+			<div class='row mb-5 quick-searches-row'>				
+				<div class='mb-5 col-md-4'>
+					<a href='?head-to-head=true&player_1_search=Virat%20Kohli&player_2_search=Kane%20Williamson&player_1_link=/india/content/player/253802.html&player_2_link=/newzealand/content/player/277906.html&match_type=Tests&stat_type=bat'>
+						<div class='quick-searches-wrapper first'>
+							<div class='quick-search-content'>
+								<div class='quick-search-text'>
+									<h4>Virat Kohli <br/>Vs<br/> Kane Williamson</h4>
+								</div>
+							</div>
+						</div>
+					</a>					
+				</div>	
 
-				<div class='features col-md-6'>
-					<div class='feature-text p-5 m-5'>						
-						<i class='fas fa-poll'></i><h3 class='px-4 mb-3'>Easy To Read Player Statistics</h3>
-						<p class='px-4'>Player comparison is presented in easy to read side by side format with a central line indicator that helps you understand the better stat at a glance.</p>
-					</div>
-				</div>
+				<div class='mb-5 col-md-4'>
+					<a href='?head-to-head=true&player_1_search=Steven%20Smith&player_2_search=Joe%20Root&player_1_link=/australia/content/player/267192.html&player_2_link=/england/content/player/303669.html&match_type=ODIs&stat_type=bat'>
+						<div class='quick-searches-wrapper second'>
+							<div class='quick-search-content'>
+								<div class='quick-search-text'>
+									<h4>Steve Smith <br/>Vs<br/> Joe Root</h4>
+								</div>
+							</div>
+						</div>
+					</a>					
+				</div>	
 
-			</div>
+				<div class='mb-5 col-md-4'>
+					<a href='?head-to-head=true&player_1_search=Jasprit%20Bumrah&player_2_search=Lockie%20Ferguson&player_1_link=/india/content/player/625383.html&player_2_link=/newzealand/content/player/493773.html&match_type=ODIs&stat_type=bowl'>
+						<div class='quick-searches-wrapper third'>
+							<div class='quick-search-content'>
+								<div class='quick-search-text'>
+									<h4>Jasprit Bumrah <br/>Vs<br/> Lockie Ferguson</h4>
+								</div>
+							</div>
+						</div>
+					</a>					
+				</div>		
 
-			<div class='row'>
-				
-				<div class='features col-md-6'>
-					<div class='feature-text p-5 m-5'>
-						<i class="fas fa-calendar-alt"></i><h3 class='px-4 mb-3'>Match & Statistic Categories</h3>
-						<p class='px-4'>Select from ODIs, Test Matches, T20Is, ListA and more. See performace stats based on Batting & Fielding or Bowling stat type.</p>
-					</div>
-				</div>
-
-				<div class='features col-md-6'>
-					<div class='feature-text p-5 m-5'>
-						<i class="fas fa-address-card"></i><h3 class='px-4 mb-3'>Player Profiles & Date Filters</h3>
-						<p class='px-4'>Your feedback is very important to us and we value it immensely. Player Profiles and Date filters will be added soon to present more in-depth analysis.</p>
-					</div>
-				</div>
-
-			</div>
-
-			<div class='row mb-5'>				
-				<div class='col-md-12 px-5'>
-					<h2 class='mb-3'><u>Sneak Peek</u></h2>
-					<img class='feature-img' alt='Compario sneak peek feature image' src='static/feat-img.png'/>
-				</div>
-
-			</div>
-
-			<div class='row mb-3'>				
-				<div class='col-md-12 px-5'>
-					<h2><u>How to use</u></h2>
-					<h5>Using Compario is super easy. Just follow the three steps given below</h5>
-				</div>
-			</div>
+			</div>	
 
 			<div class='row mb-5'>				
 				<div class='offset-md-2 col-md-8 px-5'>
-					<ul>
-						<li>Enter first, last or full names of the players you wish to compare</li>
-						<li>Select players, match type and stat type from the drop-down options & hit Compare</li>
-						<li>View detailed comparison and share it with your cricket loving friends</li>
-					</ul>
-				</div>
+					<h2>Or</h2>					
+				</div>				
 			</div>
 
 			<div id='home-page-new-compare-btn'>
 				<div class='col-md-12'><button id='compare-new-btn' class='btn btn-success'>Start New Comparison</button></div>
-			</div>
-
+			</div>	
 
 		</div>
 		
 		<div id='player-comparison-wrapper'>
 			<!-- Player Comparison -->
 			
-		</div>	
-
-		<div id='coming-soon' class='px-2'>
-			<p>Compario is best viewed on larger screens such as laptops. More in-depth comparisons, date based filters and player profiles is coming soon.</p>
-		</div>		
+		</div>				
         
         <?php 
 			if (($p1_search != "") && ($p2_search != "") && ($player_1_link != "") && ($player_2_link != ""))
@@ -203,6 +184,10 @@ else
 				</script>";
 			}
 		?>
+
+		<div id='coming-soon' class='px-2'>
+            <p>Compario is best viewed on larger screens such as laptops. More in-depth comparisons, date based filters and player profiles is coming soon.</p>
+        </div>        
 
 		<?php include('footer.inc'); ?>	
 	</body>

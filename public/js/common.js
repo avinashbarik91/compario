@@ -13,13 +13,13 @@ function getPlayers(e)
         $(".err-msg").slideDown(200);
         $("#content").slideUp(200);
         $("#player-comparison-wrapper").fadeOut(500);
-        $("#player-comp-intro").fadeIn(500);
+        $(".player-comp-intro").fadeIn(500);
         return false;
     }
 
     $(".loader-first-text").css('visibility', 'visible');
     $("#player-comparison-wrapper").fadeOut(500);
-    $("#player-comp-intro").fadeIn(500);
+    $(".player-comp-intro").fadeIn(500);
     $("#compare-new-btn").slideDown(200);
     $.ajax({
         url: "compare.php",
@@ -79,7 +79,7 @@ function comparePlayers(e)
 
     $("#player-comparison-wrapper").show();
     $("#player-comparison-wrapper").html("<p class='loader-text'>Crunching Data...</p>");    
-    $("#player-comp-intro").hide();
+    $(".player-comp-intro").hide();
 
     $.ajax({
         url: "compare.php",
@@ -100,7 +100,7 @@ function comparePlayers(e)
             if (data.output != null)
             { 
                 $(".loader").hide();    
-                $("#player-comp-intro").hide();           
+                $(".player-comp-intro").hide();           
                 $("#player-comparison-wrapper").html(data.output);
                 $('html, body').animate({
                     scrollTop: $("#player-comparison-wrapper").offset().top
@@ -124,7 +124,7 @@ function comparePlayers(e)
                     }, 500);
 
                 $("#player-comparison-wrapper").fadeOut(500);
-                $("#player-comp-intro").fadeIn(500);
+                $(".player-comp-intro").fadeIn(500);
                 $("#compare-new-btn").slideDown(200);
                 $("#content").slideUp(200);
                 $(".err-msg").slideUp(200);
@@ -155,7 +155,7 @@ $(document).ready(function(){
         }, 500);
 
     $("#player-comparison-wrapper").fadeOut(500);
-    $("#player-comp-intro").fadeIn(500);
+    $(".player-comp-intro").fadeIn(500);
     $("#compare-new-btn").slideDown(200);
     $("#content").slideUp(200);
     $(".err-msg").slideUp(200);
