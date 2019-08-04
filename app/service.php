@@ -2,8 +2,10 @@
 
 $stat_types 		= array(array("name" => "bat", "value" => "Batting & Fielding"), array("name" => "bowl", "value" => "Bowling"));
 $match_types 		= array("Tests", "ODIs", "T20Is", "First-class", "List A", "T20s");
-$bat_stat_category  = array("Matches", "Innings", "Not Outs", "Runs", "Highest Score", "Batting Average", "Balls Faced", "Strike Rate", "100s", "50s", "4s", "6s", "Catches Taken", "Stumpings Made");
+$bat_field_stat_category  = array("Matches", "Innings", "Not Outs", "Runs", "Highest Score", "Batting Average", "Balls Faced", "Strike Rate", "100s", "50s", "4s", "6s", "Catches Taken", "Stumpings Made");
+$bat_stat_category  = array("Matches", "Innings", "Not Outs", "Runs", "Highest Score", "Batting Average", "Balls Faced", "Strike Rate", "100s", "50s", "Ducks", "4s", "6s");
 $bowl_stat_category = array("Matches", "Innings", "Balls Bowled", "Runs Conceded", "Wickets Taken", "Best Bowling Innings", "Best Bowling Match", "Bowling Average", "Economy Rate", "Bowling Strike Rate", "4 Wicket Haul", "5 Wicket Haul", "10 Wicket Haul");
+$quick_picks        = array(array("name" => "all_time", "value" => "Full Career"), array("name" => "last_12_months", "value" => "Last 12 Months"), array("name" => "last_2_years", "value" => "Last 2 years"), array("name" => "last_3_years", "value" => "Last 3 years"));
 
 function read_player_list($search_str)
 {	
@@ -42,7 +44,7 @@ function read_player_list($search_str)
 	return $player_list;
 }
 
-function render_player_list($player_1, $player_2, $player_1_selected = null, $player_2_selected = null, $match = null, $stat = null)
+function render_player_list($player_1, $player_2, $player_1_selected = null, $player_2_selected = null, $match = null, $stat = null, $type_picked = null)
 {
 	$player_1_list = read_player_list(str_replace(" ", "+", $player_1));
 	$player_2_list = read_player_list(str_replace(" ", "+", $player_2));	
@@ -144,6 +146,26 @@ function render_player_list($player_1, $player_2, $player_1_selected = null, $pl
 		$html .=  "</select>";
 		$html .=  "</div>";
 
+		//Date Range
+		$html .=  "<div class='col-md-3'>";	
+		$html .=  "<label for='quick-pick'>Date</label>";
+		$html .=  "<select class='form-control' id='quick-pick'>";	
+
+		foreach ($GLOBALS['quick_picks'] as $pick_type) 
+		{
+			if ($pick_type['name'] == $type_picked)
+			{
+				$html .=  "<option selected='selected' value='" . $pick_type['name'] . "'>" . $pick_type['value'] . "</option>";
+			}
+			else
+			{
+				$html .=  "<option value='" . $pick_type['name'] . "'>" . $pick_type['value'] . "</option>";
+			}
+		}
+		
+		$html .=  "</select>";
+		$html .=  "</div>";		
+
 		$html .=  "</div><div class='row pt-2'><div class='col-md-4 offset-md-4 '>";
 		$html .=  "<button id='compare-btn' class='btn btn-success' onclick=comparePlayers(event)>Compare</button>";
 		$html .=  "</div></div>";
@@ -190,20 +212,62 @@ function read_player_comparison($player_1_link, $player_2_link, $stat_type)
 	}	
 }
 
-function render_players_comparison($player_1_link, $player_1_name, $player_2_link, $player_2_name, $match_type, $stat_type, $content_width, $share_link)
-{
-	$player_stats = read_player_comparison($player_1_link, $player_2_link, $stat_type);
-		
+function read_player_comparison_date_range($player_1_link, $player_2_link, $stat_type, $range_picked)
+{	
 	if ($stat_type == "bat")
-	{
-		$stats_keys = $GLOBALS['bat_stat_category'];
-		$stat_full_name = "Batting and Fielding";	
+	{ 
+		$player_1_bat_stats 	= read_batting_stats_date_range($player_1_link, $player_1_image, $range_picked);
+		$player_2_bat_stats 	= read_batting_stats_date_range($player_2_link, $player_2_image, $range_picked);
+
+		return array(	"player_1_stats" => array("bat" => $player_1_bat_stats, "image" => $player_1_image), 
+						"player_2_stats" => array("bat" => $player_2_bat_stats, "image" => $player_2_image)
+				);
 	}
-	else if ($stat_type == "bowl")
+	/*else if ($stat_type == "bowl")
 	{
-		$stats_keys = $GLOBALS['bowl_stat_category'];
-		$stat_full_name = "Bowling";	
-	}	
+		$player_1_bowl_stats 	= read_bowling_stats($player_1_link, $player_1_image);	
+		$player_2_bowl_stats 	= read_bowling_stats($player_2_link, $player_2_image);
+
+		return array(	"player_1_stats" => array("bowl" => $player_1_bowl_stats, "image" => $player_1_image), 
+						"player_2_stats" => array("bowl" => $player_2_bowl_stats, "image" => $player_2_image)
+				);
+	}*/	
+}
+
+function render_players_comparison($player_1_link, $player_1_name, $player_2_link, $player_2_name, $match_type, $stat_type, $content_width, $share_link, $range_picked = null)
+{
+	if ($range_picked != "" && $range_picked != "all_time")
+	{
+		$player_stats = read_player_comparison_date_range($player_1_link, $player_2_link, $stat_type, $range_picked);
+
+		if ($stat_type == "bat")
+		{
+			$stats_keys = $GLOBALS['bat_stat_category'];
+			$stat_full_name = "Batting and Fielding";	
+		}
+		/*else if ($stat_type == "bowl")
+		{
+			$stats_keys = $GLOBALS['bowl_stat_category'];
+			$stat_full_name = "Bowling";	
+		}*/
+	}
+	else
+	{
+		$player_stats = read_player_comparison($player_1_link, $player_2_link, $stat_type);
+
+		if ($stat_type == "bat")
+		{
+			$stats_keys = $GLOBALS['bat_field_stat_category'];
+			$stat_full_name = "Batting and Fielding";	
+		}
+		else if ($stat_type == "bowl")
+		{
+			$stats_keys = $GLOBALS['bowl_stat_category'];
+			$stat_full_name = "Bowling";	
+		}	
+	}
+	
+	
 
 	$player_1_stats_val  = array_values($player_stats['player_1_stats'][$stat_type][$match_type]);
 	$player_2_stats_val  = array_values($player_stats['player_2_stats'][$stat_type][$match_type]);
@@ -360,7 +424,7 @@ function read_batting_and_fielding_stats($player_link, &$player_image)
 	$stat_array = array();
 	$stat_group_array = array();
 	$current_stat_group_name = "";
-	$stat_category = $GLOBALS['bat_stat_category'];
+	$stat_category = $GLOBALS['bat_field_stat_category'];
 	$loop_count = 0;
 	
 	foreach ($bat_field_td as $td) 
@@ -385,6 +449,76 @@ function read_batting_and_fielding_stats($player_link, &$player_image)
 	}
 	
 	return $stat_group_array;
+}
+
+function read_range_str($range_picked)
+{	
+	switch ($range_picked) 
+	{
+		case 'last_12_months':
+
+			$date_to = date('d+M+Y');
+			$date_from = date('d+M+Y', strtotime('-1 year'));
+			$str = "spanmax1=".$date_to.";spanmin1=".$date_from;
+			
+			break;
+
+		default:
+			# code...
+			break;
+
+		
+	}
+
+	return $str;	
+}
+
+function read_batting_stats_date_range($player_link, &$player_image, $range_picked)
+{
+	$date_to = "04+Aug+2019";
+	$date_from = "04+Aug+2018";
+	$match_type = 1; //Tests
+	$stat_type = "bat";
+	$current_stat_group_name = "Tests";
+
+	$player_id          = read_player_id_by_link($player_link);
+	$range_str          = read_range_str($range_picked);
+	$scraper_api 		= "";
+	$data 				= file_get_contents($scraper_api . "http://www.espncricinfo.com" . $player_link);
+	$player_image 		= read_player_profile($data)['image'];
+	$data 				= file_get_contents($scraper_api . "http://stats.espncricinfo.com/ci/engine/player/".$player_id.".html?class=".$match_type.";". $range_str .";spanval1=span;template=results;type=batting");
+	$bat_stat        	= explode('<tr class="data1">', $data)[2];
+	$bat_stat  	        = explode('</td>', $bat_stat);
+
+	$i = 0;
+	$count = 0;
+	$stat_array = array();
+	$stat_group_array = array();
+	$stat_category = $GLOBALS['bat_stat_category'];
+
+	foreach ($bat_stat as $stat_row) 
+	{
+		if ($i < 1 || $i > 13)
+		{
+			$i++;
+			continue;
+		}
+
+		$stat_array[$stat_category[$count]] = explode(">", $stat_row)[1];
+		$i++;
+		$count++;
+	}
+
+	$stat_group_array[$current_stat_group_name] = $stat_array;
+	return $stat_group_array;
+	
+}
+
+function read_player_id_by_link($player_link)
+{
+	$player_id_parts    = explode("/", $player_link);
+	$player_id          = str_replace(".html", "", $player_id_parts[sizeof($player_id_parts) - 1]);
+	return $player_id;
 }
 
 function read_player_profile($data)

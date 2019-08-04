@@ -66,6 +66,7 @@ function comparePlayers(e)
 
     var matchType = $("#match-type-selected option:selected").val();
     var statType  = $("#stat-type-selected option:selected").val();
+    var quickPick = $("#quick-pick option:selected").val();
     
     var contentWidth = $("#content").width();    
     var shareLink = "?head-to-head=true&player_1_search="+player1+"&player_2_search="+player2+"&player_1_link="+player1Link+"&player_2_link="+player2Link+"&match_type="+matchType+"&stat_type="+statType;
@@ -94,7 +95,8 @@ function comparePlayers(e)
                 match_type: matchType,
                 stat_type: statType,
                 content_width: contentWidth,
-                share_link: shareLink
+                share_link: shareLink,
+                range_picked: quickPick
             },
         success: function(data){
             if (data.output != null)
