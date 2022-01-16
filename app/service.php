@@ -350,7 +350,7 @@ function render_share_buttons($share_link, $share_str)
 function read_batting_and_fielding_stats($player_link, &$player_image)
 {
 	$scraper_api 		= "";
-	$data 				= file_get_contents($scraper_api . "http://www.espncricinfo.com" . $player_link);
+	$data 				= create_generic_curl_request($scraper_api . "http://www.espncricinfo.com" . $player_link);
 	$player_image 		= read_player_profile($data)['image'];	
 	$bat_field_table 	= explode('<table class="engineTable"', $data)[1];
 	$bat_field_body  	= explode('<tbody>', $bat_field_table)[1];
@@ -389,10 +389,26 @@ function read_batting_and_fielding_stats($player_link, &$player_image)
 
 function read_player_profile($data)
 {
+	$div = explode("player-card__details", $data);
+	$div = explode("PICTURES/CMS", $div[sizeof($div)-1]);
+	$img = "https://img1.hscicdn.com/image/upload/f_auto,t_gn_f_345/lsci/db/PICTURES/CMS/";
+	
+	$count = 0;
+	foreach ($div as $this_div) 
+	{
+		$count++;
+		if ($count > 1)
+		{
+			if (strpos($this_div, "headshot") !== false)
+			{				
+				$img_link = explode(".png", $this_div)[0];				
+			}
+		}		
+	}
+	
 	$link = explode('/inline/', $data)[1];
 	$link = trim(explode('" title="', $link)[0]);
-	$player_image = "http://www.espncricinfo.com/inline/" . $link; 
-	$player_image = "https://anaixnggen.cloudimg.io/crop/160x200/x/".$player_image;
+	$player_image = $img . $img_link . ".png";	
 	$profile = null;
 	
 	return array("image" => $player_image, "profile" => $profile);
@@ -436,6 +452,28 @@ function read_bowling_stats($player_link, &$player_image)
 	}
 	
 	return $stat_group_array;
+}
+
+function create_generic_curl_request($url)
+{ 
+    $ch = curl_init();
+    $headers = array(); 
+    $headers[] = 'Accept: application/json'; 
+    $headers[] = 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36';           
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_URL, $url);        
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
+    $result = curl_exec($ch);
+    if (curl_errno($ch)) {
+        echo 'Error:' . curl_error($ch);
+    }
+    curl_close($ch);    
+    return $result;
 }
 
 
