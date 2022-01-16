@@ -1,7 +1,7 @@
 <?php 
 
 $stat_types 		= array(array("name" => "bat", "value" => "Batting & Fielding"), array("name" => "bowl", "value" => "Bowling"));
-$match_types 		= array("Tests", "ODIs", "T20Is", "First-class", "List A", "T20s");
+$match_types 		= array("Test", "ODI", "T20I", "FC", "List A", "T20");
 $bat_stat_category  = array("Matches", "Innings", "Not Outs", "Runs", "Highest Score", "Batting Average", "Balls Faced", "Strike Rate", "100s", "50s", "4s", "6s", "Catches Taken", "Stumpings Made");
 $bowl_stat_category = array("Matches", "Innings", "Balls Bowled", "Runs Conceded", "Wickets Taken", "Best Bowling Innings", "Best Bowling Match", "Bowling Average", "Economy Rate", "Bowling Strike Rate", "4 Wicket Haul", "5 Wicket Haul", "10 Wicket Haul");
 
@@ -352,7 +352,7 @@ function read_batting_and_fielding_stats($player_link, &$player_image)
 	$scraper_api 		= "";
 	$data 				= create_generic_curl_request($scraper_api . "http://www.espncricinfo.com" . $player_link);
 	$player_image 		= read_player_profile($data)['image'];	
-	$bat_field_table 	= explode('<table class="engineTable"', $data)[1];
+	$bat_field_table 	= explode('standings-widget-table', $data)[1];
 	$bat_field_body  	= explode('<tbody>', $bat_field_table)[1];
 	$bat_field_td   	= explode('</td>', $bat_field_body);
 
@@ -362,27 +362,29 @@ function read_batting_and_fielding_stats($player_link, &$player_image)
 	$current_stat_group_name = "";
 	$stat_category = $GLOBALS['bat_stat_category'];
 	$loop_count = 0;
-	
+	//var_dump($bat_field_td); exit();
 	foreach ($bat_field_td as $td) 
 	{
 		if ($loop_count < sizeof($bat_field_td) - 1)
 		{
-			if (strpos($td, 'title="record rank') !== false)
+			if (strpos($td, '-child-color') !== false)
 			{
-				$current_stat_group_name = str_replace("</b>", "", explode("<b>", $td)[1]);			
+				$current_stat_group_name = str_replace("</span>", "", explode('<span class="out-padding">', $td)[1]);			
 				$stat_array = array();
-				$count = 0;
+				$count = 0;						
 			}
 			else
 			{
-				$stat_array[$stat_category[$count]] = str_replace("*", "", explode(">", $td)[1]);
+				$stat = explode(">", explode('</span>', $td)[0]);
+				$stat = ($stat[sizeof($stat) - 1]);
+				$stat_array[$stat_category[$count]] = $stat;
 				$stat_group_array[$current_stat_group_name] = $stat_array;
 				$count++;
 			}
 		}
 
 		$loop_count++;		
-	}
+	}	
 	
 	return $stat_group_array;
 }
