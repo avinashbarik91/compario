@@ -394,7 +394,7 @@ function read_player_profile($data)
 	$div = explode("player-card__details", $data);
 	$div = explode("PICTURES/CMS", $div[sizeof($div)-1]);
 	$img = "https://img1.hscicdn.com/image/upload/f_auto,t_gn_f_345/lsci/db/PICTURES/CMS/";
-	
+	$img_link = [];
 	$count = 0;
 	foreach ($div as $this_div) 
 	{
@@ -403,14 +403,12 @@ function read_player_profile($data)
 		{
 			if (strpos($this_div, "headshot") !== false)
 			{				
-				$img_link = explode(".png", $this_div)[0];				
+				array_push($img_link, explode(".png", $this_div)[0]);							
 			}
 		}		
-	}
+	}	
 	
-	$link = explode('/inline/', $data)[1];
-	$link = trim(explode('" title="', $link)[0]);
-	$player_image = $img . $img_link . ".png";	
+	$player_image = $img . $img_link[1] . ".png";	
 	$profile = null;
 	
 	return array("image" => $player_image, "profile" => $profile);
