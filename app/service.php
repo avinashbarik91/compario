@@ -307,7 +307,7 @@ function render_players_comparison($player_1_link, $player_1_name, $player_2_lin
 	        			<div id="disqus_thread"></div>
 							<script>		
 								var disqus_config = function () {
-								this.page.url = "https://compario.dev/' . $share_link .'";  
+								this.page.url = "https://compario.in/' . $share_link .'";  
 								this.page.identifier = "head-to-head-1"; 
 								};
 			
@@ -341,7 +341,7 @@ function render_share_buttons($share_link, $share_str)
 						<a alt="Share on Facebook" title="Share on Facebook" href="https://www.facebook.com/sharer/sharer.php?u=' . rawurlencode($share_link) .'" target="_blank" class="facebook-share-btn"><i class="fab fa-facebook-square"></i></a>
 
 						<!-- LinkedIn -->
-						<a alt="Share on LinkedIn" title="Share on LinkedIn" href="https://www.linkedin.com/shareArticle?mini=true&url=' . rawurlencode($share_link) . '&title=' . $share_str . '&source=https://www.compario.dev&summary=' . $share_str.'" target="_blank" class="linked-in-share-btn"><i class="fab fa-linkedin"></i></a>							
+						<a alt="Share on LinkedIn" title="Share on LinkedIn" href="https://www.linkedin.com/shareArticle?mini=true&url=' . rawurlencode($share_link) . '&title=' . $share_str . '&source=https://www.compario.in&summary=' . $share_str.'" target="_blank" class="linked-in-share-btn"><i class="fab fa-linkedin"></i></a>							
 					</div>
 				</div>
 			</div>';

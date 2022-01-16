@@ -18,7 +18,7 @@
 		<meta http-equiv="x-ua-compatible" content="ie-edge">
 		<meta property='og:title' content='Disclaimer Policy | Compario'/>		
 		<meta property='og:description' content='Disclaimer | Compario - Simple head-to-head comparison for cricket players'/>
-		<meta property='og:url' content='https://compario.dev'/>
+		<meta property='og:url' content='https://compario.in'/>
 		<meta property='og:type' content='Open Source'/>
 		<link rel="icon" type="image/png" sizes="96x96" href="/static/favicon-3-96x96.png">
 		<link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Righteous&display=swap" rel="stylesheet">
@@ -41,7 +41,7 @@
 						<p>Last updated: July 19, 2019.</p>
 						<p class='mb-5'>If you require any more information or have any questions about our site's disclaimer, please feel free to contact us by email at avinashbarik91@gmail.com</p>
 
-						<p class='mb-5'>All the information on this website - https://www.compario.dev/ - is published in good faith and for general information purpose only. Compario does not make any warranties about the completeness, reliability and accuracy of this information. Any action you take upon the information you find on this website (Compario), is strictly at your own risk. Compario will not be liable for any losses and/or damages in connection with the use of our website.</p>
+						<p class='mb-5'>All the information on this website - https://www.compario.in/ - is published in good faith and for general information purpose only. Compario does not make any warranties about the completeness, reliability and accuracy of this information. Any action you take upon the information you find on this website (Compario), is strictly at your own risk. Compario will not be liable for any losses and/or damages in connection with the use of our website.</p>
 
 						<p class='mb-5'>From our website, you can visit other websites by following hyperlinks to such external sites. While we strive to provide only quality links to useful and ethical websites, we have no control over the content and nature of these sites. These links to other websites do not imply a recommendation for all the content found on these sites. Site owners and content may change without notice and may occur before we have the opportunity to remove a link which may have gone 'bad'.</p>
 

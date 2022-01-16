@@ -18,7 +18,7 @@
 		<meta http-equiv="x-ua-compatible" content="ie-edge">
 		<meta property='og:title' content='Compario'/>		
 		<meta property='og:description' content='Error 404 | Compario - Simple head-to-head comparison for cricket players'/>
-		<meta property='og:url' content='https://compario.dev'/>
+		<meta property='og:url' content='https://compario.in'/>
 		<meta property='og:type' content='Open Source'/>
 		<link rel="icon" type="image/png" sizes="96x96" href="/static/favicon-3-96x96.png">
 		<link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Righteous&display=swap" rel="stylesheet">
