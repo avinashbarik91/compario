@@ -421,7 +421,7 @@ function read_bowling_stats($player_link, &$player_image)
 	$scraper_api 		= "";
 	$data 				= file_get_contents($scraper_api . "http://www.espncricinfo.com" . $player_link);
 	$player_image 		= read_player_profile($data)['image'];	
-	$bowl_table 		= explode('<table class="engineTable"', $data)[2];
+	$bowl_table 		= explode('standings-widget-table', $data)[2];
 	$bowl_table_body  	= explode('<tbody>', $bowl_table)[1];
 	$bowl_td   			= explode('</td>', $bowl_table_body);
 
@@ -431,20 +431,22 @@ function read_bowling_stats($player_link, &$player_image)
 	$current_stat_group_name = "";
 	$stat_category = $GLOBALS['bowl_stat_category'];
 	$loop_count = 0;
-	
+	//var_dump($bowl_td); exit();
 	foreach ($bowl_td as $td) 
 	{
 		if ($loop_count < sizeof($bowl_td) - 1)
 		{
-			if (strpos($td, 'title="record rank') !== false)
+			if (strpos($td, '-child-color') !== false)
 			{
-				$current_stat_group_name = str_replace("</b>", "", explode("<b>", $td)[1]);			
+				$current_stat_group_name = str_replace("</span>", "", explode('<span class="out-padding">', $td)[1]);			
 				$stat_array = array();
-				$count = 0;
+				$count = 0;						
 			}
 			else
 			{
-				$stat_array[$stat_category[$count]] = explode(">", $td)[1];
+				$stat = explode(">", explode('</span>', $td)[0]);
+				$stat = ($stat[sizeof($stat) - 1]);
+				$stat_array[$stat_category[$count]] = $stat;
 				$stat_group_array[$current_stat_group_name] = $stat_array;
 				$count++;
 			}
